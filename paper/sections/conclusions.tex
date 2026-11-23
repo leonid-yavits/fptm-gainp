@@ -1,0 +1,20 @@
+\section{Conclusions}\label{sec:conclusions}
+
+\wosnew{We mapped Fuzzy-Pattern Tsetlin Machine inference onto \gainp{}, a GC-eDRAM associative in-memory processor, using only its compare, write and read primitives.
+A sample-stationary and a clause-stationary layout were studied. Exact compile-time clause simplification and two in-array miss counters make the mapping practical.
+For all 80 trained models of the main experiments and the 46 energy-oriented models, the in-array predictions matched a software reference on all checked test samples.}
+
+\wosnew{The hardware evaluation targets a new 7~nm \gainp{} design, with parameters predicted from the 16~nm \gainp{} figures and foundry scaling data.
+A strict clause costs one search cycle regardless of its length, while a fuzzy clause costs a bit-serial miss count.
+The \gainp{} cost of FPTM therefore follows its total number of included literals and its miss tolerance, rather than its clause count alone.
+With the accuracy-oriented hyperparameters, FPTM pays off on ALeRCE. There, the 20-clause FPTM is more accurate than a 600-clause strict model and needs} \hyp{about $1.5\times$ less predicted energy}. \wosnew{Strict models are cheaper on WOS-46985, and on NSL-KDD at moderate accuracy.
+Energy-oriented hyperparameters, tuned for few included literals, cut the predicted FPTM energy by up to $3.7\times$ on ALeRCE, $12\times$ on NSL-KDD and $25\times$ on WOS-46985.
+On NSL-KDD, FPTM models then form the whole accuracy and energy front. In one run, a 20-clause FPTM reaches the accuracy of the most accurate strict model, within the 0.5-point resolution of this test set, at $12.9\times$ less predicted energy.
+On ALeRCE, FPTM gives the two cheapest points of the front, and strict models give the highest accuracy. On WOS-46985, strict models stay cheaper.
+On all three datasets, the last fraction of a point of accuracy costs $2\times$ to more than $20\times$ in predicted energy.
+FPTM is therefore the better rule base on \gainp{} when its clauses stay short, as on ALeRCE and NSL-KDD, and the strict rule base when they stay long, as on WOS-46985.
+In the clause-stationary layout, the accuracy-oriented 20-clause ALeRCE FPTM needs about $47\times$ less array area than the 1,000-clause strict model. It needs a longer latency and} \hyp{$1.6\times$ to $4.9\times$} \wosnew{more predicted energy per sample.}
+
+\hyp{In the sample-stationary layout, the predicted \gainp{} energy per classification, excluding model-SRAM leakage, lies within the range reported for TM ASICs and in-memory designs. It is below that of TM FPGA accelerators. These designs use other datasets and models. Under a 1~W core-power bound, a single-thread CPU needs $63\times$ to about $7{,}100\times$ more energy for every model. For astronomical alert classification, one 0.19~mm$^2$ macro is predicted to classify about $11{,}000\times$ the average alert rate expected from LSST.}
+
+\hyp{Multi-level matchline sensing, an inter-column reduction unit and cost-aware FPTM training are possible ways to remove the miss-count penalty of fuzzy clauses. Silicon characterization of the 7~nm \gainp{} will replace the predicted parameters.}

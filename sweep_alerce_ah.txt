@@ -1,0 +1,10 @@
+PATIENCE=0 RESULTS_ROOT=results_alerce_ah python3 run_fptm.py alerce AH_S_LF1_C1000 1000 22 400 4 1 128 300 0
+PATIENCE=0 RESULTS_ROOT=results_alerce_ah python3 run_fptm.py alerce AH_S_LF1_C600 600 17 400 5 1 128 300 0
+PATIENCE=0 RESULTS_ROOT=results_alerce_ah python3 run_fptm.py alerce AH_S_LF1_C400 400 14 400 5 1 128 300 0
+PATIENCE=0 RESULTS_ROOT=results_alerce_ah python3 run_fptm.py alerce AH_S_LF1_C200 200 10 200 6 1 128 300 0
+PATIENCE=0 RESULTS_ROOT=results_alerce_ah python3 run_fptm.py alerce AH_F_C200 200 14 200 4 2 200 300 0
+PATIENCE=0 RESULTS_ROOT=results_alerce_ah python3 run_fptm.py alerce AH_F_C100 100 10 100 5 2 200 300 0
+PATIENCE=0 RESULTS_ROOT=results_alerce_ah python3 run_fptm.py alerce AH_F_C40 40 10 100 10 5 200 300 0
+PATIENCE=0 RESULTS_ROOT=results_alerce_ah python3 run_fptm.py alerce AH_F_C20 20 8 100 12 6 200 300 0
+PATIENCE=0 RESULTS_ROOT=results_alerce_ah python3 run_fptm.py alerce AH_F_C10 10 9 100 32 16 200 300 0
+PATIENCE=0 RESULTS_ROOT=results_alerce_ah python3 run_fptm.py alerce AH_F_C2 2 5 100 50 25 200 300 0

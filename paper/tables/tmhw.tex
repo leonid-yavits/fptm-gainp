@@ -1,0 +1,24 @@
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{>{\raggedright\arraybackslash}p{3.0cm}>{\raggedright\arraybackslash}p{3.2cm}>{\raggedright\arraybackslash}p{2.7cm}>{\raggedright\arraybackslash}p{2.4cm}r>{\raggedright\arraybackslash}p{2.4cm}>{\raggedright\arraybackslash}p{2.9cm}}
+\toprule
+Design & Platform & Model & Dataset & Acc.\ (\%) & Energy/classif. & Classif./s \\
+\midrule
+Wheeldon et al.~\cite{wheeldon2020learning} & ASIC, 65~nm, layout & Vanilla TM (20) & Iris & n/r$^{a}$ & 30.6~pJ & n/r \\
+Tunheim et al.~\cite{tunheim2026asic} & ASIC, 65~nm, silicon & ConvCoTM & MNIST & 97.42 & 8.6~nJ$^{b}$ & 60.3k (2.7~mm$^2$) \\
+Lin et al.~\cite{lin2025tsetlinkws}$^{c}$ & ASIC, 65~nm & CTM & GSCD-12$^{d}$ & 87.35 & 191~nJ$^{e}$ & n/r$^{f}$ \\
+Tunheim et al.~\cite{tunheim2023ctm} & FPGA, XC7Z020 & CTM & 2-D Noisy XOR & 99.9 & 0.6~$\mu$J & 4.4M \\
+Tunheim et al.~\cite{tunheim2025fpga} & FPGA, XCZU7 & ConvCoTM & MNIST & 97.6 & 13.3~$\mu$J & 134k \\
+Mao et al.~\cite{mao2025dtm} & FPGA, ZU7EV & Vanilla TM, CoTM & MNIST & 97.74 & 73.6~$\mu$J$^{g}$ & 22.4k \\
+Ghazal et al.~\cite{ghazal2023imbue} & ReRAM IMC, 65~nm$^{h}$ & Vanilla TM & MNIST & 96.48 & 13.9~nJ & n/r \\
+Ghazal et al.~\cite{ghazal2023imbue} & ReRAM IMC, 65~nm$^{h}$ & Vanilla TM & KWS-6 & 87.1 & 5.91~nJ & n/r \\
+Ghazal et al.~\cite{ghazal2025impact} & Y-Flash IMC, 180~nm$^{h}$ & CoTM & MNIST & 96.3 & 84.2~pJ$^{i}$ & n/r \\
+Hnilov~\cite{hnilov2025fptm} & CPU, 16 cores & FPTM (1) & IMDb & n/r$^{j}$ & n/r & 34.5M \\
+This work & CPU, 1 thread & FPTM (20) & ALeRCE & 93.23 & not measured & 277k \\
+\midrule
+This work & \hyp{\gainp{}, 7~nm, pred.} & FPTM (20) & ALeRCE & 93.23 & \hyp{4.42 / 0.73~nJ} & \hyp{3.9M (0.19~mm$^2$)} \\
+This work & \hyp{\gainp{}, 7~nm, pred.} & Vanilla TM (1,000) & ALeRCE & 91.43 & \hyp{17.90 / 2.80~nJ} & \hyp{1.8M (0.72~mm$^2$)} \\
+This work & \hyp{\gainp{}, 7~nm, pred.} & Strict (200) & NSL-KDD & 85.82 & \hyp{2.46 / 0.28~nJ} & \hyp{39.9M (0.24~mm$^2$)} \\
+This work & \hyp{\gainp{}, 7~nm, pred.} & FPTM (20) & NSL-KDD & 85.94 & \hyp{5.05 / 0.58~nJ} & \hyp{13.5M (0.20~mm$^2$)} \\
+\bottomrule
+\end{tabular}

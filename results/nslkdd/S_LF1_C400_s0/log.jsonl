@@ -1,0 +1,23 @@
+{"epoch": 1, "val": 0.9744403873630735, "train_s": 36.82, "total": 505210, "per_clause_mean": 54.91413043478261, "per_clause_max": 178, "per_clause_min": 0, "empty_clauses": 6, "best": true}
+{"epoch": 2, "val": 0.9816637561517702, "train_s": 35.2, "total": 466127, "per_clause_mean": 50.665978260869565, "per_clause_max": 177, "per_clause_min": 0, "empty_clauses": 2, "best": true}
+{"epoch": 3, "val": 0.9824575329417368, "train_s": 34.37, "total": 435121, "per_clause_mean": 47.295760869565214, "per_clause_max": 175, "per_clause_min": 0, "empty_clauses": 5, "best": true}
+{"epoch": 4, "val": 0.9831719320527068, "train_s": 34.64, "total": 409932, "per_clause_mean": 44.557826086956524, "per_clause_max": 172, "per_clause_min": 0, "empty_clauses": 1, "best": true}
+{"epoch": 5, "val": 0.9846801079536435, "train_s": 35.38, "total": 388851, "per_clause_mean": 42.26641304347826, "per_clause_max": 169, "per_clause_min": 0, "empty_clauses": 2, "best": true}
+{"epoch": 6, "val": 0.9856326401016035, "train_s": 35.2, "total": 369415, "per_clause_mean": 40.15380434782609, "per_clause_max": 165, "per_clause_min": 1, "empty_clauses": 0, "best": true}
+{"epoch": 7, "val": 0.9855532624226068, "train_s": 34.73, "total": 352459, "per_clause_mean": 38.310760869565215, "per_clause_max": 164, "per_clause_min": 0, "empty_clauses": 1}
+{"epoch": 8, "val": 0.9849976186696301, "train_s": 36.01, "total": 337587, "per_clause_mean": 36.69423913043478, "per_clause_max": 160, "per_clause_min": 0, "empty_clauses": 2}
+{"epoch": 9, "val": 0.9851563740276235, "train_s": 34.87, "total": 324313, "per_clause_mean": 35.25141304347826, "per_clause_max": 157, "per_clause_min": 0, "empty_clauses": 2}
+{"epoch": 10, "val": 0.9854738847436101, "train_s": 32.21, "total": 312285, "per_clause_mean": 33.944021739130434, "per_clause_max": 155, "per_clause_min": 1, "empty_clauses": 0}
+{"epoch": 11, "val": 0.9857913954595967, "train_s": 35.96, "total": 301323, "per_clause_mean": 32.7525, "per_clause_max": 153, "per_clause_min": 0, "empty_clauses": 1, "best": true}
+{"epoch": 12, "val": 0.9853151293856167, "train_s": 36.18, "total": 291569, "per_clause_mean": 31.692282608695653, "per_clause_max": 151, "per_clause_min": 0, "empty_clauses": 1}
+{"epoch": 13, "val": 0.9863470392125734, "train_s": 36.52, "total": 282480, "per_clause_mean": 30.704347826086956, "per_clause_max": 150, "per_clause_min": 1, "empty_clauses": 0, "best": true}
+{"epoch": 14, "val": 0.9858707731385934, "train_s": 35.13, "total": 274257, "per_clause_mean": 29.81054347826087, "per_clause_max": 145, "per_clause_min": 0, "empty_clauses": 2}
+{"epoch": 15, "val": 0.9861882838545801, "train_s": 37.45, "total": 266361, "per_clause_mean": 28.95228260869565, "per_clause_max": 145, "per_clause_min": 0, "empty_clauses": 4}
+{"epoch": 16, "val": 0.9861882838545801, "train_s": 34.02, "total": 259704, "per_clause_mean": 28.22869565217391, "per_clause_max": 144, "per_clause_min": 0, "empty_clauses": 2}
+{"epoch": 17, "val": 0.9861089061755834, "train_s": 33.61, "total": 253251, "per_clause_mean": 27.527282608695653, "per_clause_max": 141, "per_clause_min": 0, "empty_clauses": 3}
+{"epoch": 18, "val": 0.9862676615335768, "train_s": 35.15, "total": 247512, "per_clause_mean": 26.903478260869566, "per_clause_max": 138, "per_clause_min": 1, "empty_clauses": 0}
+{"epoch": 19, "val": 0.9862676615335768, "train_s": 32.99, "total": 241772, "per_clause_mean": 26.279565217391305, "per_clause_max": 137, "per_clause_min": 0, "empty_clauses": 3}
+{"epoch": 20, "val": 0.9862676615335768, "train_s": 34.43, "total": 236803, "per_clause_mean": 25.73945652173913, "per_clause_max": 135, "per_clause_min": 0, "empty_clauses": 1}
+{"epoch": 21, "val": 0.9861882838545801, "train_s": 36.22, "total": 232255, "per_clause_mean": 25.245108695652174, "per_clause_max": 131, "per_clause_min": 0, "empty_clauses": 2}
+{"epoch": 22, "val": 0.9861882838545801, "train_s": 40.73, "total": 227601, "per_clause_mean": 24.739239130434783, "per_clause_max": 130, "per_clause_min": 0, "empty_clauses": 1}
+{"epoch": 23, "val": 0.9863470392125734, "train_s": 40.08, "total": 223176, "per_clause_mean": 24.258260869565216, "per_clause_max": 126, "per_clause_min": 0, "empty_clauses": 1}

@@ -1,0 +1,2 @@
+nslkdd F1_C2_s2 mapping S match: 1.0 n=1500 cycles 96282 rows 236
+nslkdd F1_C2_s2 mapping C match: 1.0 n=200 cycles 16143 {'F_used': 178, 'columns': 46, 'rows': 238, 'score_bits': 6, 'reduction_adds': 46, 'strict_program': False}

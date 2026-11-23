@@ -1,0 +1,2 @@
+wos F3_C20_s1 mapping S match: 1.0 n=1500 cycles 1379735 rows 10064
+wos F3_C20_s1 mapping C match: 1.0 n=200 cycles 236585 {'F_used': 9100, 'columns': 140, 'rows': 9128, 'score_bits': 4, 'reduction_adds': 140, 'strict_program': False}

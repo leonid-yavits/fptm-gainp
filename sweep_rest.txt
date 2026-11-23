@@ -1,0 +1,9 @@
+python3 run_fptm.py wos F4_C40 40 32 1000 16 8 200 50
+python3 run_fptm.py wos F5_C100 100 50 1000 16 4 200 50
+python3 run_vanilla.py nslkdd V1_C200 200 50 10 30
+python3 run_vanilla.py alerce V1_C200 200 50 10 30
+python3 run_vanilla.py wos V1_C200 200 50 25 15
+python3 run_fptm.py nslkdd S2_LF1_C1000 1000 100 100 12 1 128 30
+python3 run_fptm.py alerce S2_LF1_C1000 1000 100 200 12 1 128 30
+python3 run_vanilla.py nslkdd V2_C1000 1000 100 10 30
+python3 run_vanilla.py alerce V2_C1000 1000 100 10 30

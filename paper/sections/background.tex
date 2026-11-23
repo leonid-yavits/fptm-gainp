@@ -1,0 +1,207 @@
+\section{Background}\label{sec:background}
+
+\subsection{Tsetlin Machine}
+A TM operates on a Boolean input $\mathbf{x}\in\{0,1\}^F$.
+Its literals are the features $x_i$ and their negations $\lnot x_i$~\cite{granmo2018tsetlin}.
+Each class owns a set of clauses. Half of them have positive polarity and half negative polarity.
+A clause $C_j$ is the conjunction of its included literals $\mathcal{I}_j$.
+In the strict TM, the class vote is
+\begin{equation}
+v_c(\mathbf{x}) = \sum_{j\in\mathcal{P}_c} C_j(\mathbf{x}) - \sum_{j\in\mathcal{N}_c} C_j(\mathbf{x}),
+\end{equation}
+where $\mathcal{P}_c$ and $\mathcal{N}_c$ are the positive and negative clauses of class $c$.
+The predicted class is $\arg\max_c v_c$.
+Training uses teams of Tsetlin automata, one per literal and clause, which decide whether the literal is included~\cite{granmo2018tsetlin}. A vote threshold $T$ sets the target margin of the class votes during training.
+Inference uses only the included literal sets.
+In the vanilla TM implementation used here~\cite{pytsetlin}, an empty clause outputs 0 at inference.
+
+\subsection{Fuzzy-Pattern Tsetlin Machine}
+FPTM replaces the strict conjunction with a graded score~\cite{hnilov2025fptm,hnilov2025code}.
+Let $n_j=|\mathcal{I}_j|$ and let $m_j(\mathbf{x})$ be the number of included literals that are false for $\mathbf{x}$.
+The reference implementation (function \texttt{check\_clause} in~\cite{hnilov2025code}) computes the clause score as
+\begin{equation}\label{eq:fptm}
+s_j(\mathbf{x}) = \max\bigl(0,\; b_j - m_j(\mathbf{x})\bigr),\qquad
+b_j = \begin{cases} \min(n_j, \LF), & n_j>0,\\ \LF, & n_j=0,\end{cases}
+\end{equation}
+and the class vote is $v_c=\sum_{\mathcal{P}_c}s_j-\sum_{\mathcal{N}_c}s_j$.
+$\LF$ is a hyperparameter that sets how many literal misses a clause absorbs.
+With $\LF=1$, a non-empty clause scores 1 if and only if all its literals hold, which is the strict TM clause. An empty clause scores $\LF$, i.e., 1 for $\LF=1$.
+FPTM keeps the TM feedback structure.
+Relative to a vanilla TM, it introduces three modifications, all visible in the reference code~\cite{hnilov2025code}.
+\begin{enumerate}
+\item \emph{Literal budget $L$.} Type~Ia feedback may add literals to a clause only while the clause has at most $L$ included literals.
+\item \emph{Deterministic Type~Ia feedback.} When a selected clause has a positive score, the automata of all true literals are rewarded toward inclusion, with no random sub-sampling. The penalty of false literals below the include threshold is deterministic as well.
+\item \emph{Fuzzy clause voting} according to Eq.~(\ref{eq:fptm}). A clause counts as firing in feedback whenever its score is positive, not only on a full match.
+\end{enumerate}
+The reference trainer also differs from Granmo's multiclass TM in two implementation details.
+First, it applies negative feedback to every class other than the target class, whereas the multiclass TM samples one negative class per example~\cite{granmo2018tsetlin}.
+Second, Type~Ib feedback of a non-firing clause decrements $d=\mathrm{round}(F/S)$ randomly chosen automata among the plain literals and $d$ among the negated literals. The vanilla TM instead decrements each automaton with probability $1/s$, where $s$ is its specificity.
+Modifications~1 and~2 and these two details affect training only.
+At inference, FPTM differs from the vanilla TM only through modification~3. It is therefore the only one that the \gainp{} mapping must support.
+
+\subsection{\gainp{}: a GC-eDRAM associative processor}\label{sec:gainp}
+\gainp{} is an AP whose CAM array is an unmodified hybrid-3T GC-eDRAM~\cite{levi2026gainp}.
+A silicon-proven GC-eDRAM macro in 16~nm FinFET technology forms its core~\cite{levi2026gainp}.
+
+\paragraph{Gain cell}
+Fig.~\ref{fig:gc}(a) shows the hybrid-3T gain cell, which combines NMOS and PMOS devices~\cite{levi2026gainp}.
+The write port is a single NMOS transistor M$_\mathrm{W}$.
+A write drives the write bitline (WBL) to the data value and asserts the write wordline (WWL), which charges or discharges the storage node (SN).
+SN drives the gate of the PMOS transistor M$_\mathrm{S}$. M$_\mathrm{S}$ and the PMOS transistor M$_\mathrm{R}$ in series form the read port.
+A read pre-discharges the read bitline (RBL) and drives the read wordline (RWL) low.
+If SN holds 0, M$_\mathrm{S}$ conducts and the RBL charges toward $V_\mathrm{DD}$. If SN holds 1, the path is cut off and the RBL stays low~\cite{levi2026gainp}.
+The RBL is sensed by a digital sense inverter, enabled by a timing signal from a replica bitline column~\cite{levi2026gainp}.
+The stored charge leaks, mainly through subthreshold leakage of the write device and gate leakage of the read devices, so the cell needs refresh~\cite{levi2026gainp}.
+The 16~nm design reduces leakage with a single-fin write transistor, a negative WWL bias of $-150$~mV for unselected rows, a boosted write supply and high-$V_\mathrm{T}$ read devices~\cite{levi2026gainp}.
+
+\paragraph{CAM cell and search}
+\gainp{} stores data in column-major order~\cite{levi2026gainp}.
+Each bit occupies two vertically stacked gain cells. The top cell holds the bit value $\beta$ and the bottom cell holds $\overline{\beta}$ (Fig.~\ref{fig:gc}(b)).
+The horizontal RWLs act as searchlines and the vertical RBLs as matchlines (ML).
+In a compare, the inverted query bit drives the top RWL ($\overline{\mathrm{SL}}$) and the query bit drives the bottom RWL (SL).
+A read port then conducts only when the query bit differs from the stored bit.
+The read current is additive. A matchline therefore charges when at least one cell of the column mismatches, and it stays discharged only when all cells match~\cite{levi2026gainp}.
+Driving both searchlines of a row high masks the row.
+Storing 1 in both gain cells of a CAM cell blocks both read paths for any query, which realizes a ternary ``don't care''.
+The \gainp{} TCAM cell thus needs six transistors~\cite{levi2026gainp}.
+
+\begin{figure}[t]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{circuitikz}[font=\small]
+% ---------------- (a) hybrid-3T gain cell ----------------
+\begin{scope}
+  \draw (0,2.0) -- (0,-3.2) node[below] {WBL};
+  \node[nmos, rotate=-90] (MW) at (1.0,0) {};
+  \draw (0,0) -- (MW.S);
+  \draw (MW.G) -- ++(0,0.5) node[above] {WWL};
+  \node[below=1pt] at (MW.center) {\footnotesize M$_\mathrm{W}$};
+  \draw (MW.D) -- (2.2,0) node[circ] (sn) {};
+  \node[above] at (2.2,0.05) {SN};
+  \node[pmos] (MS) at (3.4,0) {};
+  \draw (2.2,0) -- (MS.G);
+  \draw (MS.S) -- ++(0,0.25) node[vcc] {};
+  \node[right] at (MS.east) {\footnotesize M$_\mathrm{S}$};
+  \node[pmos] (MR) at (3.4,-2.2) {};
+  \draw (MS.D) -- (MR.S);
+  \draw (MR.G) -- ++(-0.35,0) node[left] {RWL};
+  \node[right] at (MR.east) {\footnotesize M$_\mathrm{R}$};
+  \draw (MR.D) -- ++(0,-0.35) -| (4.9,-2.6);
+  \draw (4.9,2.0) -- (4.9,-3.2) node[below] {RBL};
+  \draw (1.85,0) node[circ] {} to[C, l^=\footnotesize$C_\mathrm{SN}$, bipoles/length=0.8cm] (1.85,-1.1) node[ground] {};
+  \node at (2.4,-5.9) {(a)};
+\end{scope}
+% ---------------- (b) CAM cell, column, sense and tag ----------------
+\begin{scope}[xshift=11.4cm, every node/.style={font=\small}]
+  \tikzset{blk/.style={draw, rounded corners=2pt, minimum height=0.85cm, align=center, fill=white}}
+  \node[blk, minimum width=2.9cm] (gt) at (0,1.5) {gain cell, read port\\ $\mathrm{SN}=\beta$};
+  \node[blk, minimum width=2.9cm] (gb) at (0,0.0) {gain cell, read port\\ $\mathrm{SN}=\overline{\beta}$};
+  \draw[dashed, rounded corners] (-1.8,-0.75) rectangle (1.8,2.3);
+  \node[anchor=south east, font=\footnotesize] at (1.8,2.3) {CAM cell};
+  \draw[-{Latex}] (-3.3,1.5) node[left, align=right] {$\overline{\mathrm{SL}}$\\(top RWL)} -- (gt.west);
+  \draw[-{Latex}] (-3.3,0.0) node[left, align=right] {SL\\(bottom RWL)} -- (gb.west);
+  \draw (2.3,2.6) -- (2.3,-1.4);
+  \draw (gt.east) -- (2.3,1.5) node[circ] {};
+  \draw (gb.east) -- (2.3,0.0) node[circ] {};
+  \node[right, align=left, font=\footnotesize] at (2.35,2.4) {ML\\(RBL)};
+  \node[font=\footnotesize, align=center] at (0,-1.25) {other CAM cells\\of the column};
+  \draw[dotted, thick] (0,-1.72) -- (0,-1.92);
+  \node[blk, minimum width=1.6cm] (sa) at (2.3,-2.2) {SA};
+  \draw (2.3,-1.4) -- (sa.north);
+  \node[blk, minimum width=1.6cm] (or) at (2.3,-3.5) {OR};
+  \node[blk, minimum width=1.6cm] (ff) at (2.3,-4.8) {tag FF};
+  \draw[-{Latex}] (sa) -- (or);
+  \draw[-{Latex}] (or) -- (ff);
+  \draw[-{Latex}] (ff.east) -- ++(0.5,0) |- (or.east);
+  \draw[-{Latex}] (ff.west) -- ++(-1.2,0) node[left, align=right, font=\footnotesize] {to write\\bitlines};
+  \node[anchor=west, align=left, font=\footnotesize] at (3.4,-2.2) {match / mismatch};
+  \node[anchor=west, align=left, font=\footnotesize] at (3.6,-4.4) {one-bit\\accumulator};
+  \node at (1.0,-5.9) {(b)};
+\end{scope}
+\end{circuitikz}}
+\caption{(a) Hybrid-3T gain cell. (b) \gainp{} CAM cell built from two stacked gain cells (read ports only), the matchline, the sense amplifier and the tag register/accumulator of one column. Redrawn after the description in~\cite{levi2026gainp}.}
+\label{fig:gc}
+\end{figure}
+
+\paragraph{Microarchitecture}
+The array consists of subarrays of $256\times64$ gain cells, i.e., $128\times64$ CAM cells (Fig.~\ref{fig:arch}(a))~\cite{levi2026gainp}.
+Each subarray has the gain-cell core, row logic that drives the WWLs and RWLs, sense amplifiers and tag register/accumulators.
+The tag of a column ORs the sense amplifier output with its previous value. It thus accumulates matches over consecutive compare cycles and is reset after a write~\cite{levi2026gainp}.
+The tags drive the write bitlines, so a write stores the tag value into a selected row of every column.
+A unified controller issues the compare and write sequences to all subarrays~\cite{levi2026gainp}.
+
+\paragraph{Associative computing}
+An AP computes by compare and write steps applied to all columns in parallel.
+An arbitrary Boolean function of a few rows costs one compare per product term of its sum-of-products form, followed by one write.
+For example, \gainp{} vector addition takes $5+4=9$ cycles per bit: four compares and a write for the sum, three compares and a write for the carry~\cite{levi2026gainp}.
+The cost depends on the operand width, not on the number of columns.
+
+\paragraph{Circuit figures and refresh}
+The 16~nm gain cell measures 0.082~$\mu$m$^2$, and the $256\times64$ macro 1889.9~$\mu$m$^2$, an array efficiency of 75\%~\cite{levi2026gainp}.
+Post-layout simulation with process variations gives a 2~ns compare cycle and 10.4~fJ per bit per compare. The evaluation phase accounts for 42\% of the delay and 45\% of the power~\cite{levi2026gainp}.
+A 1000-point worst-case Monte Carlo simulation gives a retention time of 75.67~$\mu$s mean and 7.57~$\mu$s standard deviation~\cite{levi2026gainp}.
+More mismatching cells per column widen the separation between match and mismatch matchline voltages~\cite{levi2026gainp}.
+
+\begin{figure}[t]
+\centering
+\resizebox{0.95\textwidth}{!}{%
+\begin{tikzpicture}[font=\small, >={Latex}]
+\tikzset{sub/.style={draw, fill=blue!6, minimum width=1.45cm, minimum height=0.9cm, font=\scriptsize, align=center},
+         blk/.style={draw, rounded corners=2pt, align=center, fill=white}}
+% (a) array of subarrays and controller
+\node[blk, minimum width=6.6cm, minimum height=0.7cm] (ctl) at (2.4,4.1) {controller (in this work: sequencer and model SRAM)};
+\foreach \i in {0,1,2,3} \foreach \j in {0,1,2} {
+  \node[sub] (s\i\j) at (\i*1.6, 2.6-\j*1.1) {subarray\\[-2pt]$128{\times}64$};
+}
+\draw[->] (ctl.south) -- (2.4,3.05);
+\node[font=\footnotesize, align=center] at (2.4,-0.65) {each subarray: GC core, row logic (WWL, RWL drivers),\\ sense amplifiers, tag register/accumulators};
+\node at (2.4,-1.5) {(a)};
+% (b) logical column built from stacked subarrays
+\begin{scope}[xshift=9.0cm]
+  \foreach \k/\y in {0/3.4, 1/2.1, 2/0.8} {
+    \node[sub, minimum width=2.2cm, minimum height=1.0cm] (c\k) at (0,\y) {subarray $\k$\\[-2pt]128 CAM rows};
+  }
+  \foreach \y in {3.4, 2.1, 0.8} {\draw[very thick, red!70!black] (1.1,\y) -- (1.4,\y);}
+  \node[font=\footnotesize] at (0,-0.15) {\vdots};
+  \draw[very thick, red!70!black] (1.4,3.4) -- (1.4,-0.6) -- (1.75,-0.6);
+  \node[blk, minimum width=1.0cm] (sa) at (2.3,-0.6) {SA};
+  \node[blk, minimum width=1.2cm] (tag) at (2.3,-1.7) {tag};
+  \draw[->] (sa) -- (tag);
+  \node[anchor=west, align=left, font=\footnotesize, text width=4.6cm] at (1.6,2.75) {read bitlines of the stacked\\subarrays, joined at the input\\of one SA during COMPARE\\(switchable)};
+  \node[anchor=west, align=left, font=\footnotesize] at (3.0,-1.2) {one logical column\\$= h$ stacked subarrays};
+  \node at (0.6,-2.4) {(b)};
+\end{scope}
+\end{tikzpicture}}
+\caption{(a) \gainp{} array organization, after~\cite{levi2026gainp}. (b) Logical column used in this work. During a compare, the read bitlines of $h$ vertically stacked subarrays are joined at the input of one sense amplifier. One compare thus spans all $h$ subarrays (one column shown). The local sense amplifiers of each subarray, used for refresh, are not shown.}
+\label{fig:arch}
+\end{figure}
+
+Table~\ref{tab:gainp} lists the \gainp{} figures used in this work.
+The article also reports a power of 2.17~$\mu$W per bit at an operating frequency of 1~GHz, evaluated with a combination of silicon measurements and circuit simulation~\cite{levi2026gainp}.
+The evaluation workbook of that study models the system at the same 1~GHz clock. This 1~ns cycle is shorter than the simulated 2~ns compare cycle.
+The static power of 380~$\mu$W per Mbit is taken from the same workbook, which is not published. \hyp{We therefore treat it as an assumption.}
+Section~\ref{sec:gainp7} derives the predicted 7~nm parameters from these two pairs of 16~nm figures.
+
+\begin{table}[!htbp]
+\small
+\centering
+\caption{\gainp{} parameters used in this work, from~\cite{levi2026gainp}. The system model clock and the static power are taken from the unpublished evaluation workbook of the same study. The static power is treated as an assumption.}
+\label{tab:gainp}
+\begin{tabular}{ll}
+\toprule
+Parameter & Value \\
+\midrule
+Technology & 16~nm FinFET, 0.8~V \\
+Subarray & $256\times64$ gain cells \\
+ & ($128\times64$ CAM cells) \\
+Gain cell area & 0.082~$\mu$m$^2$ \\
+Subarray (macro) area & 1889.9~$\mu$m$^2$ \\
+Compare cycle, circuit simulation & 2~ns \\
+Compare energy, circuit simulation & 10.4~fJ per bit \\
+System model clock & 1~GHz \\
+System model power & 2.17~$\mu$W per bit at 1~GHz \\
+Static power (unpublished workbook) & \hyp{380~$\mu$W per Mbit} \\
+Retention (worst-case Monte Carlo) & 75.67~$\mu$s mean, 7.57~$\mu$s std.\ \\
+\bottomrule
+\end{tabular}
+\end{table}

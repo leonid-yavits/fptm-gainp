@@ -1,0 +1,98 @@
+\section{Experimental methodology}\label{sec:method}
+
+\subsection{Datasets}
+We use three public datasets from different application domains (Table~\ref{tab:datasets}).
+\begin{itemize}
+\item \textbf{WOS-46985}~\cite{kowsari2017hdltex}: 46,985 Web of Science abstracts with 7 top-level domain labels (level~1).
+We use a stratified 80/20 train/test split and hold out 10\% of the training split for validation.
+Text is booleanized following the FPTM IMDb pipeline~\cite{hnilov2025code}, with n-grams up to length 2: a binary bag of unigrams and bigrams, then $\chi^2$ selection of 10,000 features.
+The vocabulary and the $\chi^2$ selection are fitted on the training split, including its validation part, and never on the test split.
+\item \textbf{ALeRCE}~\cite{sanchezsaez2021alerce}: the labeled set and light-curve features of the ALeRCE light curve classifier, with the 15 leaf classes of its taxonomy. The 152 features are thermometer-encoded at up to 7 quantile levels, plus missing-value bits, giving 1,172 Boolean inputs.
+\item \textbf{NSL-KDD}~\cite{tavallaee2009nslkdd}: network connection records with 23 classes (normal traffic and 22 attack types). Numeric features are thermometer-encoded and categorical features one-hot encoded, giving 178 Boolean inputs. The test set is KDDTest+ restricted to attack types seen in training. It differs in distribution from the training set.
+\end{itemize}
+For ALeRCE and NSL-KDD, the train, validation and test splits and the booleanization come from the published TreeTM preparation code~\cite{treetm2026repo}, with seed 0. The TreeTM repository provides the preparation code but not the data, which are obtained from their original sources.
+The WOS-46985 splits and the ALeRCE splits are stratified by class. The NSL-KDD training and validation splits are stratified by traffic category, and its test split is the fixed KDDTest+ set.
+
+\begin{table}[!htbp]
+\small
+\centering
+\caption{Datasets after booleanization.}
+\label{tab:datasets}
+\input{tables/datasets}
+\end{table}
+
+\subsection{Models and training}
+Julia, the language of the FPTM reference code~\cite{hnilov2025code}, was not available in our environment.
+We therefore ported \texttt{FuzzyPatternTM.jl} line by line to Python with Numba.
+Clause evaluation, vote, both feedback types, include thresholds and state bounds follow the Julia code.
+The port therefore contains the three FPTM modifications and the two trainer details of Section~\ref{sec:background}.
+
+
+We compare three model families.
+\begin{itemize}
+\item \textbf{FPTM}, with 2, 10, 20, 40 and 100 clauses per class.
+$\LF$ and $L$ decrease as the clause count grows (Table~\ref{tab:hyper}).
+\item \textbf{FPTM with $\LF=1$}, i.e.\ the FPTM trainer with strict clause voting. We refer to them as strict models.
+We use 200, 400, 600 and 1,000 clauses per class on ALeRCE and NSL-KDD, and 200 and 400 on WOS-46985.
+\item \textbf{Vanilla TM}, Granmo's multiclass TM in the \texttt{pyTsetlinMachine} package~\cite{pytsetlin}, with 200 and 1,000 clauses per class on ALeRCE and NSL-KDD and 400 on WOS-46985.
+
+\end{itemize}
+The $\LF=1$ family shares the FPTM trainer and differs from FPTM in the clause vote.
+It still differs from FPTM in clause count, $T$, $L$ and include limit. It is therefore not a controlled ablation of the fuzzy vote.
+Differences between the $\LF=1$ family and the vanilla TM combine the trainer differences of Section~\ref{sec:background} with different hyperparameters. We do not attribute them to a single cause.
+
+Table~\ref{tab:hyper} lists all hyperparameters.
+They follow the examples of the FPTM reference code and common TM settings. No hyperparameter search was performed for the main experiments. The final settings were fixed after an earlier single-seed round, whose validation and test results were known at that time. \wosnew{Section~\supref{firstround} of the supplementary material describes this round and its baselines.}
+
+Every run trains for at most 50 epochs and stops after 10 epochs without a new best validation accuracy.
+The epoch with the best validation accuracy is kept, and its test accuracy is measured once.
+Each configuration is trained with three seeds.
+Because of training time, the 1,000-clause models on ALeRCE and NSL-KDD and the vanilla TM on WOS-46985 use one seed.
+We report the mean and the sample standard deviation over seeds.
+The test accuracy is that of the exported clause set, i.e.\ the model that \gainp{} executes.
+\wosnew{Section~\supref{training} of the supplementary material gives further training details.}
+
+\wosnew{\textit{Energy-oriented hyperparameters.} The hyperparameters of Table~\ref{tab:hyper} aim at accuracy. We call them accuracy-oriented.
+After the main experiments, one of the authors chose new values for the FPTM and strict models of each dataset with the reference FPTM implementation~\cite{hnilov2025code}. The tuning used the validation split only. We trained the reported models with our port.
+Its goal was a low density of included literals at an acceptable, not maximum, accuracy. We call these settings energy-oriented.
+On ALeRCE, the threshold is $T=\sqrt{C\,\LF/2}$, rounded to an integer, with $C$ clauses per class.
+There, $L$, $\LF$ and $S$ were chosen for 2, 20 and 200 clauses per class and interpolated or extrapolated for the other sizes.
+On NSL-KDD and WOS-46985, the values were chosen per model. Table~\ref{tab:energyhp} lists all values.
+Each energy-oriented model trains for at least 300 epochs, and the epoch is again selected on the validation split.
+ALeRCE and WOS-46985 use two runs per model. Both use the same sample order and differ in the random sequence of the feedback steps. The first stops at 300 epochs. The second continues while the validation accuracy improves and stops after 50 epochs without a new best. No model of the second runs improved after epoch 300.
+NSL-KDD uses one 300-epoch run. The include limit is 200, except for the strict ALeRCE and WOS-46985 models, which use 128.
+Taking the epoch-300 model instead of the best validation epoch changes the test accuracy by at most 0.5 points on ALeRCE and NSL-KDD.}
+
+\begin{table}[!htbp]
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\centering
+\caption{\wosnew{Accuracy-oriented hyperparameters and number of seeds. W, A, N: WOS-46985, ALeRCE, NSL-KDD. $S$: FPTM specificity divisor, which sets $d=\mathrm{round}(F/S)$, with $S=1{,}000$, 200 and 100 on W, A and N. $s$: vanilla TM specificity. Strict: FPTM trainer with $\LF=1$. Table~\supref{tab:hyperfull} of the supplementary material lists the best epoch of each run.}}
+\label{tab:hyper}
+\input{tables/hyper}
+\end{table}
+
+\subsection{\gainp{} evaluation}\label{sec:eval}
+For each trained model, the compilers of Section~\ref{sec:mapping} generate the \gainp{} programs of both mappings.
+A functional simulator executes them with the COMPARE, WRITE and READ semantics of Section~\ref{sec:mapping}, including ternary storage for Mapping~C.
+For every run, the in-array prediction was compared with an independent NumPy reference of the trained model. Mapping~S was checked on the first 1,500 test samples and Mapping~C on the first 200 test samples of each dataset.
+
+The cycle and row counts of each program do not depend on the data.
+
+Latency, energy and area follow from the executed programs and the parameters of Table~\ref{tab:params7}.
+The primary evaluation uses the two predicted 7~nm corners. The 16~nm values serve as a reference.
+\begin{itemize}
+\item Latency: cycles $\times$ cycle time, plus refresh stalls.
+\item Dynamic energy: the sum over cycles of the number of unmasked rows, times the number of active columns, times the energy per cell operation.
+\item Static energy: the static power per Mbit of gain cells occupied by the sample (Mapping~S) or by the model (Mapping~C), times the latency.
+\item Controller energy: sequencer cycles and model-store reads (M6).
+\item Area: number of occupied subarrays $\times$ the subarray macro area, plus the model SRAM in Mapping~S (M7). In Mapping~S, a stack of $h$ subarrays forms 64 logical columns and holds 64 samples.
+\end{itemize}
+\hyp{In addition to the 7~nm assumptions of Section~\ref{sec:params7}, the following assumptions are ours and are not taken from~\cite{levi2026gainp}.
+(M1) WRITE and READ take one cycle and cost the same energy per cell as COMPARE.
+(M2) Dynamic energy scales with the number of unmasked rows, and masked rows cost nothing. Section~\ref{sec:sens} reports the alternative that charges one cell operation per column and cycle.
+(M3) Refresh is applied every $\mu-3\sigma=52.96$~$\mu$s of the retention time distribution. One refresh reads and rewrites all gain-cell rows of every occupied subarray in lockstep, through the local sense amplifiers. It stalls the array for 512 cycles and costs two cell operations per CAM cell.} \wosnew{Section~\supref{modelling} of the supplementary material gives the details and discusses the tail of the retention time distribution.} \hyp{
+(M4) In Mapping~S, loading a batch writes one input row per cycle, $F$ cycles in total. Off-chip input bandwidth is not modelled. Load time is included in the throughput. The load energy, i.e., the cell, sequencer and static energy of the load cycles, is excluded from the reported energy. It is at most 0.39~nJ (conservative) per sample, on WOS-46985, and at most 11\% of the reported energy.} \hyp{
+(M5) In Mapping~C, the vote reduction outside the array is excluded from latency and energy.
+(M6) A sequencer generates the COMPARE, WRITE and READ stream (Section~\ref{sec:mapS}). Its energy is charged per issued cycle, including refresh cycles, and per 32-bit read of the model store. Each read returns two 16-bit entries.} A 32-bit SRAM access costs 5~pJ in 45~nm CMOS~\cite{han2016deep}. \hyp{Both costs are anchored at this value, independent of the store size. The 16~nm reference points use 5~pJ. The 7~nm corners apply only the 16~nm to 7~nm factors of the array energy, giving 3.70~pJ (conservative) and 1.75~pJ (optimistic). The 45~nm to 16~nm reduction is not applied, so these values are upper estimates. In Mapping~S, one sequencer and one model store serve a macro of 256 subarrays, which holds $\lfloor 256/h\rfloor$ stacks of 64 samples each. The per-batch controller energy is shared by all samples of the macro. We assume a prefetch buffer large enough that the store does not stall the array. Its area and energy are not modelled.} \wosnew{Section~\supref{modelling} of the supplementary material gives its sizing.} \hyp{ In Mapping~C, the controller energy is charged to each sample. Its sequencer keeps only the list of used features, whose area is not modelled.
+(M7) The model store holds one 16-bit entry per included literal and one per clause. It is a high-density SRAM with the 7~nm cell area of~\cite{wu2016n7} and the 75\% array efficiency of the \gainp{} macro. Its area is added to the Mapping~S area. The sequencer logic area is not modelled. The leakage of the model SRAM is not modelled either.} \wosnew{Section~\supref{modelling} of the supplementary material estimates this leakage. It would add at most} \hyp{24\%} \wosnew{(conservative) and} \hyp{27\%} \wosnew{(optimistic) to the Mapping~S energy, and} \hyp{0.4\% to 0.6\%} \wosnew{for the 20-clause ALeRCE FPTM.}

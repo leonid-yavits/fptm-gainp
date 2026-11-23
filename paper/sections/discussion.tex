@@ -1,0 +1,49 @@
+\section{Discussion}\label{sec:discussion}
+
+\paragraph{When FPTM pays off on \gainp{}}
+In software, FPTM saves memory and training time by needing fewer clauses~\cite{hnilov2025fptm}.
+On an associative processor the cost model differs.
+A strict clause of any length is one search \wosnew{cycle}, so the \wosnew{cycle count} of a strict model grows with its number of clauses. \wosnew{In Mapping~S, its energy also grows with the number of unmasked rows, i.e., with the clause length.}
+A fuzzy clause needs a miss count, which a binary-sensed search cannot produce in one step.
+Its cost grows with its number of literals. With the thermometer counter, each literal costs up to $3b_j$ cycles. With the binary counter, it costs about $5\log_2$ of the literal index.
+FPTM therefore pays off on \gainp{} when its clause reduction outweighs the cost of counting.
+\wosnew{With the accuracy-oriented hyperparameters, this holds on ALeRCE.} There, 20 FPTM clauses per class are more accurate than 600 strict clauses, at fewer cycles and lower predicted energy.
+The 40-clause FPTM is also slightly more accurate than the 1,000-clause strict model, at lower predicted cost. \wosnew{The margin is 0.36 points against this single-seed baseline, or 0.15 points against its first-round variant (Section~\supref{firstround} of the supplementary material).}
+\wosnew{With the energy-oriented hyperparameters, the 200-clause strict model gains 3.06 points, and FPTM keeps only the low-energy end of the ALeRCE front.
+On NSL-KDD, FPTM models form the whole front, led by the energy-oriented 2-clause and 20-clause models. With the accuracy-oriented ones, strict models were cheaper at moderate accuracy.
+On WOS-46985, the FPTM clauses stay long even after tuning, and long clauses need long miss counts. Strict models remain cheaper there with both sets.}
+
+\wosnew{\paragraph{Accuracy versus energy}
+The two hyperparameter sets show that the \gainp{} cost of FPTM follows its total number of included literals and its miss tolerance, rather than its clause count alone. Section~\supref{spearman} of the supplementary material quantifies this relation.
+On ALeRCE, the 1,000-clause strict model gains 0.65 points over the 20-clause FPTM at $7.2\times$ the energy.
+On NSL-KDD, the most accurate models differ by less than the 0.5-point resolution of the test set, but by more than $20\times$ in predicted energy.
+On these two datasets, a designer who accepts a small loss can choose a compact FPTM model and save most of the energy.
+On WOS-46985, the compact choice is a strict model.
+When FPTM targets an associative processor, the training should therefore aim at few included literals as well as at few clauses.}
+
+\paragraph{Application perspective}
+A TM rule base is readable whether its clauses are strict or fuzzy.
+A fuzzy clause reads as a conjunction that tolerates a bounded number of failed conditions.
+\wosnew{A rule base with fewer literals is easier for a domain expert to inspect, and on \gainp{} it is also cheaper.
+On ALeRCE, the energy-oriented 20-clause FPTM has $4.4\times$ fewer literals than the 200-clause strict model, which is 0.53 points more accurate. On NSL-KDD, the energy-oriented 20-clause FPTM, with 8.8 literals per clause, is the cheaper rule base at the same accuracy, within the resolution of the test set. On WOS-46985, the strict rule base is cheaper.}
+For alert classification, LSST expects several million alerts per night~\cite{ivezic2019lsst}. \hyp{Even 10 million alerts in an 8-hour night amount to about 350 alerts per second.
+In Mapping~S, a macro of 256 subarrays holds 25 stacks of 10 subarrays, i.e., 1,600 ALeRCE samples. Its 250 occupied subarrays and its model SRAM occupy about 0.19~mm$^2$ at 7~nm. It classifies a batch with the 20-clause FPTM in about 0.41~ms at the conservative corner, including input loading. This corresponds to about $3.9\times10^6$ samples per second, about $11{,}000\times$ the average alert rate above.
+The program takes the same time for a partly filled batch, so alerts need not wait for a full batch. The energy per sample then rises, because the controller energy is shared by fewer samples.}
+This comparison covers only the classification step. Light-curve feature extraction and booleanization are not part of it.
+For intrusion detection, Mapping~C classifies one record at a time with the input on the searchlines. \hyp{The 20-clause NSL-KDD FPTM needs about 6.9~$\mu$s per record at the conservative corner.} This latency covers the in-array part only. The external reduction of about 458 clause scores into class votes is not included. We do not compare this latency with a line-rate requirement. The features of NSL-KDD are computed per connection, and their extraction is not modelled.
+
+\wosnew{Section~\supref{discussion} of the supplementary material discusses the strict models of the FPTM trainer and the choice between the two mappings.}
+
+\paragraph{Directions}
+\hyp{Three directions follow from the cost structure.
+(i) Multi-level sensing. In \gainp{}, mismatch readout is additive, and more mismatching cells shift the matchline voltage further from the match case~\cite{levi2026gainp}. A sense amplifier that resolves a few mismatch levels would turn the FPTM miss count into a single search and remove the main penalty of fuzzy clauses.
+(ii) Inter-column reduction. A small adder tree at the subarray edge would make Mapping~C complete for both strict and fuzzy models.
+(iii) Cost-aware training. The Mapping~S cycle count grows with the total literal count of the fuzzy clauses. A literal-count regularizer or a smaller $\LF$ could lower the \gainp{} cost of FPTM.}
+Directions (i) and (ii) are not evaluated here. \wosnew{For (iii), the energy-oriented hyperparameters of Section~\ref{sec:energyhp} are a first step. Tuned for few included literals, they cut the predicted FPTM energy by up to $3.7\times$ on ALeRCE, $12\times$ on NSL-KDD and $25\times$ on WOS-46985.}
+
+\paragraph{Limitations}
+All hardware results are predictions for a 7~nm \gainp{} that has not yet been characterized in silicon.
+\hyp{They rest on foundry scaling data and on the assumptions listed in Sections~\ref{sec:params7} and~\ref{sec:method}. The most important are the per-cell energy model and the controller energy. The retention time, the local refresh path of the logical column and the compare cycle of a long logical column also matter.}
+Training used a sequential port of the Julia reference code, so accuracy may differ slightly from the multithreaded reference.
+No hyperparameter search was performed for the main experiments. \wosnew{The energy-oriented settings were tuned by hand on the validation split, not by a systematic search. Their results use two runs on ALeRCE and WOS-46985, one run on NSL-KDD, and a longer training schedule than the main experiments.} The vanilla TM baseline in particular may be stronger with tuning.
+Three seeds give a first estimate of the seed variance. The 1,000-clause models and the WOS-46985 vanilla TM use one seed.

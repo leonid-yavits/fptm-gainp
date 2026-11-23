@@ -1,0 +1,42 @@
+\begin{tabular}{lrlrrr}
+\toprule
+\multirow{2}{*}{Model (cl./class)} & CPU time & CPU & CPU energy & \gainp{} energy & \multirow{2}{*}{Ratio} \\
+ & ($\mu$s/sample) & kernel & at 1~W ($\mu$J) & (nJ, cons.) & \\
+\midrule
+\multicolumn{6}{l}{\textit{WOS-46985}} \\
+FPTM (2) & 3.95 $\pm$ 0.10 & dense & \hyp{3.95} & \hyp{35.4} & \hyp{111} \\
+FPTM (10) & 7.17 $\pm$ 0.21 & dense & \hyp{7.17} & \hyp{113} & \hyp{63.6} \\
+FPTM (20) & 10.72 $\pm$ 0.33 & dense & \hyp{10.7} & \hyp{64.8} & \hyp{165} \\
+FPTM (40) & 17.46 $\pm$ 0.27 & dense & \hyp{17.5} & \hyp{101} & \hyp{173} \\
+FPTM (100) & 37.83 $\pm$ 1.11 & dense & \hyp{37.8} & \hyp{84.1} & \hyp{450} \\
+Strict (200) & 29.51 $\pm$ 2.19 & sliced & \hyp{29.5} & \hyp{4.15} & \hyp{7,110} \\
+Strict (400) & 33.22 $\pm$ 3.06 & sliced & \hyp{33.2} & \hyp{8.12} & \hyp{4,090} \\
+Vanilla TM (400) & 97.95 & sliced & \hyp{98.0} & \hyp{56.7} & \hyp{1,727} \\
+\midrule
+\multicolumn{6}{l}{\textit{ALeRCE}} \\
+FPTM (2) & 0.45 $\pm$ 0.01 & dense & \hyp{0.447} & \hyp{1.20} & \hyp{373} \\
+FPTM (10) & 1.83 $\pm$ 0.04 & dense & \hyp{1.83} & \hyp{4.66} & \hyp{393} \\
+FPTM (20) & 3.61 $\pm$ 0.05 & dense & \hyp{3.61} & \hyp{4.44} & \hyp{813} \\
+FPTM (40) & 6.94 $\pm$ 0.19 & dense & \hyp{6.94} & \hyp{6.85} & \hyp{1,013} \\
+FPTM (100) & 15.50 $\pm$ 0.30 & sliced & \hyp{15.5} & \hyp{6.75} & \hyp{2,297} \\
+Strict (200) & 5.73 $\pm$ 0.05 & sliced & \hyp{5.73} & \hyp{1.91} & \hyp{2,999} \\
+Strict (400) & 7.98 $\pm$ 0.11 & sliced & \hyp{7.98} & \hyp{4.29} & \hyp{1,859} \\
+Strict (600) & 10.01 $\pm$ 0.14 & sliced & \hyp{10.0} & \hyp{6.85} & \hyp{1,461} \\
+Strict (1,000) & 14.46 & sliced & \hyp{14.5} & \hyp{12.3} & \hyp{1,178} \\
+Vanilla TM (200) & 10.76 $\pm$ 1.00 & sliced & \hyp{10.8} & \hyp{4.24} & \hyp{2,536} \\
+Vanilla TM (1,000) & 27.25 & sliced & \hyp{27.2} & \hyp{17.9} & \hyp{1,521} \\
+\midrule
+\multicolumn{6}{l}{\textit{NSL-KDD}} \\
+FPTM (2) & 0.21 $\pm$ 0.00 & dense & \hyp{0.211} & \hyp{1.29} & \hyp{163} \\
+FPTM (10) & 0.87 $\pm$ 0.01 & dense & \hyp{0.875} & \hyp{5.15} & \hyp{170} \\
+FPTM (20) & 1.88 $\pm$ 0.03 & dense & \hyp{1.88} & \hyp{5.05} & \hyp{373} \\
+FPTM (40) & 4.32 $\pm$ 0.15 & dense & \hyp{4.32} & \hyp{8.96} & \hyp{483} \\
+FPTM (100) & 12.01 $\pm$ 0.04 & dense & \hyp{12.0} & \hyp{10.0} & \hyp{1,197} \\
+Strict (200) & 3.88 $\pm$ 0.10 & sliced & \hyp{3.88} & \hyp{2.46} & \hyp{1,578} \\
+Strict (400) & 7.12 $\pm$ 0.11 & sliced & \hyp{7.12} & \hyp{5.74} & \hyp{1,242} \\
+Strict (600) & 10.29 $\pm$ 0.19 & sliced & \hyp{10.3} & \hyp{9.28} & \hyp{1,109} \\
+Strict (1,000) & 15.69 & sliced & \hyp{15.7} & \hyp{15.3} & \hyp{1,026} \\
+Vanilla TM (200) & 8.30 $\pm$ 0.37 & sliced & \hyp{8.30} & \hyp{4.97} & \hyp{1,669} \\
+Vanilla TM (1,000) & 30.38 & sliced & \hyp{30.4} & \hyp{22.8} & \hyp{1,332} \\
+\bottomrule
+\end{tabular}

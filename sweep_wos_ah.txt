@@ -1,0 +1,8 @@
+PATIENCE=0 RESULTS_ROOT=results_wos_ah python3 run_fptm.py wos AH_S_LF1_C400 400 50 2000 16 1 128 300 0
+PATIENCE=0 RESULTS_ROOT=results_wos_ah python3 run_fptm.py wos AH_S_LF1_C200 200 35 2000 16 1 128 300 0
+PATIENCE=0 RESULTS_ROOT=results_wos_ah python3 run_fptm.py wos AH_F_C200 200 35 2000 12 2 200 300 0
+PATIENCE=0 RESULTS_ROOT=results_wos_ah python3 run_fptm.py wos AH_F_C100 100 25 2000 12 2 200 300 0
+PATIENCE=0 RESULTS_ROOT=results_wos_ah python3 run_fptm.py wos AH_F_C40 40 18 2000 12 2 200 300 0
+PATIENCE=0 RESULTS_ROOT=results_wos_ah python3 run_fptm.py wos AH_F_C20 20 13 2000 12 2 200 300 0
+PATIENCE=0 RESULTS_ROOT=results_wos_ah python3 run_fptm.py wos AH_F_C10 10 8 2000 12 2 200 300 0
+PATIENCE=0 RESULTS_ROOT=results_wos_ah python3 run_fptm.py wos AH_F_C2 2 5 2000 150 5 200 300 0

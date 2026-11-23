@@ -1,0 +1,2 @@
+alerce F1_C2_s1 mapping S match: 1.0 n=1500 cycles 74941 rows 1233
+alerce F1_C2_s1 mapping C match: 1.0 n=200 cycles 95523 {'F_used': 988, 'columns': 30, 'rows': 1048, 'score_bits': 6, 'reduction_adds': 30, 'strict_program': False}

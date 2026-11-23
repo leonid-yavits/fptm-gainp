@@ -1,0 +1,2358 @@
+{
+ "cpu": "Intel(R) Xeon(R) Processor @ 2.10GHz",
+ "threads": 1,
+ "numba": "0.68.1",
+ "numpy": "2.5.3",
+ "rows": [
+  {
+   "dataset": "alerce",
+   "tag": "F1_C2",
+   "seed": 0,
+   "clauses_total": 30,
+   "n_test": 24700,
+   "kernels": {
+    "dense": {
+     "match": 1.0,
+     "us_pilot": 0.6797063562755775,
+     "us": 0.5260696823419535,
+     "us_min": 0.452637329734586,
+     "us_max": 0.5280676590885496
+    },
+    "sparse": {
+     "match": 1.0,
+     "us_pilot": 8.770323684210469
+    },
+    "sliced": {
+     "match": 1.0,
+     "us_pilot": 7.112593279352011
+    }
+   },
+   "best_kernel": "dense",
+   "cpu_match": 1.0,
+   "cpu_us_per_sample": 0.5260696823419535,
+   "cpu_us_min": 0.452637329734586,
+   "cpu_us_max": 0.5280676590885496
+  },
+  {
+   "dataset": "alerce",
+   "tag": "F1_C2",
+   "seed": 1,
+   "clauses_total": 30,
+   "n_test": 24700,
+   "kernels": {
+    "dense": {
+     "match": 1.0,
+     "us_pilot": 0.6147423481776438,
+     "us": 0.5332192467504727,
+     "us_min": 0.5169167196356365,
+     "us_max": 0.5582482219061266
+    },
+    "sparse": {
+     "match": 1.0,
+     "us_pilot": 8.94892866396769
+    },
+    "sliced": {
+     "match": 1.0,
+     "us_pilot": 6.562235101214535
+    }
+   },
+   "best_kernel": "dense",
+   "cpu_match": 1.0,
+   "cpu_us_per_sample": 0.5332192467504727,
+   "cpu_us_min": 0.5169167196356365,
+   "cpu_us_max": 0.5582482219061266
+  },
+  {
+   "dataset": "alerce",
+   "tag": "F1_C2",
+   "seed": 2,
+   "clauses_total": 30,
+   "n_test": 24700,
+   "kernels": {
+    "dense": {
+     "match": 1.0,
+     "us_pilot": 0.5127474493930474,
+     "us": 0.4146441791291417,
+     "us_min": 0.40709654170039933,
+     "us_max": 0.4844776267592007
+    },
+    "sparse": {
+     "match": 1.0,
+     "us_pilot": 8.347565587044587
+    },
+    "sliced": {
+     "match": 1.0,
+     "us_pilot": 4.938476396760807
+    }
+   },
+   "best_kernel": "dense",
+   "cpu_match": 1.0,
+   "cpu_us_per_sample": 0.4146441791291417,
+   "cpu_us_min": 0.40709654170039933,
+   "cpu_us_max": 0.4844776267592007
+  },
+  {
+   "dataset": "alerce",
+   "tag": "F2_C10",
+   "seed": 0,
+   "clauses_total": 150,
+   "n_test": 24700,
+   "kernels": {
+    "dense": {
+     "match": 1.0,
+     "us_pilot": 1.6274919838053155,
+     "us": 1.931844626426189,
+     "us_min": 1.8544009863820456,
+     "us_max": 2.0959532510121592
+    },
+    "sparse": {
+     "match": 1.0,
+     "us_pilot": 27.879184412955826
+    },
+    "sliced": {
+     "match": 1.0,
+     "us_pilot": 8.635515141700466
+    }
+   },
+   "best_kernel": "dense",
+   "cpu_match": 1.0,
+   "cpu_us_per_sample": 1.931844626426189,
+   "cpu_us_min": 1.8544009863820456,
+   "cpu_us_max": 2.0959532510121592
+  },
+  {
+   "dataset": "alerce",
+   "tag": "F2_C10",
+   "seed": 1,
+   "clauses_total": 150,
+   "n_test": 24700,
+   "kernels": {
+    "dense": {
+     "match": 1.0,
+     "us_pilot": 1.8061407692310127,
+     "us": 2.065131874493898,
+     "us_min": 1.964041089436876,
+     "us_max": 2.261043918128646
+    },
+    "sparse": {
+     "match": 1.0,
+     "us_pilot": 30.535511821862546
+    },
+    "sliced": {
+     "match": 1.0,
+     "us_pilot": 9.321626396761094
+    }
+   },
+   "best_kernel": "dense",
+   "cpu_match": 1.0,
+   "cpu_us_per_sample": 2.065131874493898,
+   "cpu_us_min": 1.964041089436876,
+   "cpu_us_max": 2.261043918128646
+  },
+  {
+   "dataset": "alerce",
+   "tag": "F2_C10",
+   "seed": 2,
+   "clauses_total": 150,
+   "n_test": 24700,
+   "kernels": {
+    "dense": {
+     "match": 1.0,
+     "us_pilot": 2.366829595141433,
+     "us": 2.0003263783584804,
+     "us_min": 1.5264218189705305,
+     "us_max": 2.0724109392712484
+    },
+    "sparse": {
+     "match": 1.0,
+     "us_pilot": 31.171282591093185
+    },
+    "sliced": {
+     "match": 1.0,
+     "us_pilot": 8.72083643724714
+    }
+   },
+   "best_kernel": "dense",
+   "cpu_match": 1.0,
+   "cpu_us_per_sample": 2.0003263783584804,
+   "cpu_us_min": 1.5264218189705305,
+   "cpu_us_max": 2.0724109392712484
+  },
+  {
+   "dataset": "alerce",
+   "tag": "F3_C20",
+   "seed": 0,
+   "clauses_total": 300,
+   "n_test": 24700,
+   "kernels": {
+    "dense": {
+     "match": 1.0,
+     "us_pilot": 3.9582246153846197,
+     "us": 3.2788321283978927,
+     "us_min": 2.788262079959544,
+     "us_max": 3.8182578744939435
+    },
+    "sparse": {
+     "match": 1.0,
+     "us_pilot": 29.898703238866293
+    },
+    "sliced": {
+     "match": 1.0,
+     "us_pilot": 9.35976356275275
+    }
+   },
+   "best_kernel": "dense",
+   "cpu_match": 1.0,
+   "cpu_us_per_sample": 3.2788321283978927,
+   "cpu_us_min": 2.788262079959544,
+   "cpu_us_max": 3.8182578744939435
+  },
+  {
+   "dataset": "alerce",
+   "tag": "F3_C20",
+   "seed": 1,
+   "clauses_total": 300,
+   "n_test": 24700,
+   "kernels": {
+    "dense": {
+     "match": 1.0,
+     "us_pilot": 3.621137692307816,
+     "us": 3.6337973481781543,
+     "us_min": 3.5895007962212993,
+     "us_max": 3.761835276653127
+    },
+    "sparse": {
+     "match": 1.0,
+     "us_pilot": 25.103408056680458
+    },
+    "sliced": {
+     "match": 1.0,
+     "us_pilot": 9.600242712550589
+    }
+   },
+   "best_kernel": "dense",
+   "cpu_match": 1.0,
+   "cpu_us_per_sample": 3.6337973481781543,
+   "cpu_us_min": 3.5895007962212993,
+   "cpu_us_max": 3.761835276653127
+  },
+  {
+   "dataset": "alerce",
+   "tag": "F3_C20",
+   "seed": 2,
+   "clauses_total": 300,
+   "n_test": 24700,
+   "kernels": {
+    "dense": {
+     "match": 1.0,
+     "us_pilot": 3.6925644129550124,
+     "us": 3.5814835357624255,
+     "us_min": 3.464187152496611,
+     "us_max": 3.7238973144399945
+    },
+    "sparse": {
+     "match": 1.0,
+     "us_pilot": 30.212879959514375
+    },
+    "sliced": {
+     "match": 1.0,
+     "us_pilot": 9.294645182186072
+    }
+   },
+   "best_kernel": "dense",
+   "cpu_match": 1.0,
+   "cpu_us_per_sample": 3.5814835357624255,
+   "cpu_us_min": 3.464187152496611,
+   "cpu_us_max": 3.7238973144399945
+  },
+  {
+   "dataset": "alerce",
+   "tag": "F4_C40",
+   "seed": 0,
+   "clauses_total": 600,
+   "n_test": 24700,
+   "kernels": {
+    "dense": {
+     "match": 1.0,
+     "us_pilot": 6.638592307692159,
+     "us": 6.957960107962251,
+     "us_min": 6.682270182186237,
+     "us_max": 7.737065708502015
+    },
+    "sparse": {
+     "match": 1.0,
+     "us_pilot": 54.96404222672068
+    },
+    "sliced": {
+     "match": 1.0,
+     "us_pilot": 11.3038802834008
+    }
+   },
+   "best_kernel": "dense",
+   "cpu_match": 1.0,
+   "cpu_us_per_sample": 6.957960107962251,
+   "cpu_us_min": 6.682270182186237,
+   "cpu_us_max": 7.737065708502015
+  },
+  {
+   "dataset": "alerce",
+   "tag": "F4_C40",
+   "seed": 1,
+   "clauses_total": 600,
+   "n_test": 24700,
+   "kernels": {
+    "dense": {
+     "match": 1.0,
+     "us_pilot": 6.058447570850427,
+     "us": 6.97465680161943,
+     "us_min": 6.784479541160612,
+     "us_max": 7.720224224021293
+    },
+    "sparse": {
+     "match": 1.0,
+     "us_pilot": 53.233566801618686
+    },
+    "sliced": {
+     "match": 1.0,
+     "us_pilot": 11.095670850201728
+    }
+   },
+   "best_kernel": "dense",
+   "cpu_match": 1.0,
+   "cpu_us_per_sample": 6.97465680161943,
+   "cpu_us_min": 6.784479541160612,
+   "cpu_us_max": 7.720224224021293
+  },
+  {
+   "dataset": "alerce",
+   "tag": "F4_C40",
+   "seed": 2,
+   "clauses_total": 600,
+   "n_test": 24700,
+   "kernels": {
+    "dense": {
+     "match": 1.0,
+     "us_pilot": 5.4086196761129495,
+     "us": 6.82399715249665,
+     "us_min": 6.796676842105155,
+     "us_max": 7.36457083670717
+    },
+    "sparse": {
+     "match": 1.0,
+     "us_pilot": 50.31891607287482
+    },
+    "sliced": {
+     "match": 1.0,
+     "us_pilot": 11.084482186234656
+    }
+   },
+   "best_kernel": "dense",
+   "cpu_match": 1.0,
+   "cpu_us_per_sample": 6.82399715249665,
+   "cpu_us_min": 6.796676842105155,
+   "cpu_us_max": 7.36457083670717
+  },
+  {
+   "dataset": "alerce",
+   "tag": "F5_C100",
+   "seed": 0,
+   "clauses_total": 1500,
+   "n_test": 24700,
+   "kernels": {
+    "dense": {
+     "match": 1.0,
+     "us_pilot": 15.318212550607676,
+     "us": 17.664004048583248,
+     "us_min": 14.271973886640001,
+     "us_max": 18.21203939271231
+    },
+    "sparse": {
+     "match": 1.0,
+     "us_pilot": 80.98464352226718
+    },
+    "sliced": {
+     "match": 1.0,
+     "us_pilot": 20.59506020242935,
+     "us": 18.367363744938935,
+     "us_min": 15.965435080971357,
+     "us_max": 20.388352388663737
+    }
+   },
+   "best_kernel": "dense",
+   "cpu_match": 1.0,
+   "cpu_us_per_sample": 17.664004048583248,
+   "cpu_us_min": 14.271973886640001,
+   "cpu_us_max": 18.21203939271231
+  },
+  {
+   "dataset": "alerce",
+   "tag": "F5_C100",
+   "seed": 1,
+   "clauses_total": 1500,
+   "n_test": 24700,
+   "kernels": {
+    "dense": {
+     "match": 1.0,
+     "us_pilot": 16.582042267205715,
+     "us": 16.29192668016189,
+     "us_min": 15.081698886639602,
+     "us_max": 17.342247570850112
+    },
+    "sparse": {
+     "match": 1.0,
+     "us_pilot": 73.12594789473688
+    },
+    "sliced": {
+     "match": 1.0,
+     "us_pilot": 13.85835493927144,
+     "us": 17.644321336032437,
+     "us_min": 15.565006376518156,
+     "us_max": 18.94477350202426
+    }
+   },
+   "best_kernel": "dense",
+   "cpu_match": 1.0,
+   "cpu_us_per_sample": 16.29192668016189,
+   "cpu_us_min": 15.081698886639602,
+   "cpu_us_max": 17.342247570850112
+  },
+  {
+   "dataset": "alerce",
+   "tag": "F5_C100",
+   "seed": 2,
+   "clauses_total": 1500,
+   "n_test": 24700,
+   "kernels": {
+    "dense": {
+     "match": 1.0,
+     "us_pilot": 17.303484898785317,
+     "us": 17.300026740890612,
+     "us_min": 16.749595971659623,
+     "us_max": 18.0139331578945
+    },
+    "sparse": {
+     "match": 1.0,
+     "us_pilot": 80.53024076923107
+    },
+    "sliced": {
+     "match": 1.0,
+     "us_pilot": 17.4103951821861,
+     "us": 15.554487550607524,
+     "us_min": 13.053250485829892,
+     "us_max": 16.67604479757054
+    }
+   },
+   "best_kernel": "sliced",
+   "cpu_match": 1.0,
+   "cpu_us_per_sample": 15.554487550607524,
+   "cpu_us_min": 13.053250485829892,
+   "cpu_us_max": 16.67604479757054
+  },
+  {
+   "dataset": "alerce",
+   "tag": "S_LF1_C1000",
+   "seed": 0,
+   "clauses_total": 15000,
+   "n_test": 24700,
+   "kernels": {
+    "dense": {
+     "match": 1.0,
+     "us_pilot": 227.67282603238849
+    },
+    "sparse": {
+     "match": 1.0,
+     "us_pilot": 297.7555832793512
+    },
+    "sliced": {
+     "match": 1.0,
+     "us_pilot": 15.273522631579231,
+     "us": 15.08719285425056,
+     "us_min": 12.994802793522796,
+     "us_max": 15.671079331983762
+    }
+   },
+   "best_kernel": "sliced",
+   "cpu_match": 1.0,
+   "cpu_us_per_sample": 15.08719285425056,
+   "cpu_us_min": 12.994802793522796,
+   "cpu_us_max": 15.671079331983762
+  },
+  {
+   "dataset": "alerce",
+   "tag": "S_LF1_C200",
+   "seed": 0,
+   "clauses_total": 3000,
+   "n_test": 24700,
+   "kernels": {
+    "dense": {
+     "match": 1.0,
+     "us_pilot": 25.607839473682287
+    },
+    "sparse": {
+     "match": 1.0,
+     "us_pilot": 42.337532550606134
+    },
+    "sliced": {
+     "match": 1.0,
+     "us_pilot": 5.044548137651125,
+     "us": 6.054046508097254,
+     "us_min": 4.756269894736989,
+     "us_max": 6.155529999999987
+    }
+   },
+   "best_kernel": "sliced",
+   "cpu_match": 1.0,
+   "cpu_us_per_sample": 6.054046508097254,
+   "cpu_us_min": 4.756269894736989,
+   "cpu_us_max": 6.155529999999987
+  },
+  {
+   "dataset": "alerce",
+   "tag": "S_LF1_C200",
+   "seed": 1,
+   "clauses_total": 3000,
+   "n_test": 24700,
+   "kernels": {
+    "dense": {
+     "match": 1.0,
+     "us_pilot": 32.500291821862454
+    },
+    "sparse": {
+     "match": 1.0,
+     "us_pilot": 51.30434319838
+    },
+    "sliced": {
+     "match": 1.0,
+     "us_pilot": 5.438428299595927,
+     "us": 5.076024595141756,
+     "us_min": 4.770358307691896,
+     "us_max": 6.084195728745313
+    }
+   },
+   "best_kernel": "sliced",
+   "cpu_match": 1.0,
+   "cpu_us_per_sample": 5.076024595141756,
+   "cpu_us_min": 4.770358307691896,
+   "cpu_us_max": 6.084195728745313
+  },
+  {
+   "dataset": "alerce",
+   "tag": "S_LF1_C200",
+   "seed": 2,
+   "clauses_total": 3000,
+   "n_test": 24700,
+   "kernels": {
+    "dense": {
+     "match": 1.0,
+     "us_pilot": 33.612751578947325
+    },
+    "sparse": {
+     "match": 1.0,
+     "us_pilot": 44.67700437246844
+    },
+    "sliced": {
+     "match": 1.0,
+     "us_pilot": 5.835812955465114,
+     "us": 5.905456224696432,
+     "us_min": 5.75935183198351,
+     "us_max": 6.631993512146003
+    }
+   },
+   "best_kernel": "sliced",
+   "cpu_match": 1.0,
+   "cpu_us_per_sample": 5.905456224696432,
+   "cpu_us_min": 5.75935183198351,
+   "cpu_us_max": 6.631993512146003
+  },
+  {
+   "dataset": "alerce",
+   "tag": "S_LF1_C400",
+   "seed": 0,
+   "clauses_total": 6000,
+   "n_test": 24700,
+   "kernels": {
+    "dense": {
+     "match": 1.0,
+     "us_pilot": 72.61744493927048
+    },
+    "sparse": {
+     "match": 1.0,
+     "us_pilot": 116.52576785425055
+    },
+    "sliced": {
+     "match": 1.0,
+     "us_pilot": 8.376674574898386,
+     "us": 8.848105951416851,
+     "us_min": 8.221996059378963,
+     "us_max": 9.229064439946416
+    }
+   },
+   "best_kernel": "sliced",
+   "cpu_match": 1.0,
+   "cpu_us_per_sample": 8.848105951416851,
+   "cpu_us_min": 8.221996059378963,
+   "cpu_us_max": 9.229064439946416
+  },
+  {
+   "dataset": "alerce",
+   "tag": "S_LF1_C400",
+   "seed": 1,
+   "clauses_total": 6000,
+   "n_test": 24700,
+   "kernels": {
+    "dense": {
+     "match": 1.0,
+     "us_pilot": 69.94058214574997
+    },
+    "sparse": {
+     "match": 1.0,
+     "us_pilot": 109.07282627530464
+    },
+    "sliced": {
+     "match": 1.0,
+     "us_pilot": 8.350449595140317,
+     "us": 8.763848083670409,
+     "us_min": 8.177826275303266,
+     "us_max": 9.692131902833887
+    }
+   },
+   "best_kernel": "sliced",
+   "cpu_match": 1.0,
+   "cpu_us_per_sample": 8.763848083670409,
+   "cpu_us_min": 8.177826275303266,
+   "cpu_us_max": 9.692131902833887
+  },
+  {
+   "dataset": "alerce",
+   "tag": "S_LF1_C400",
+   "seed": 2,
+   "clauses_total": 6000,
+   "n_test": 24700,
+   "kernels": {
+    "dense": {
+     "match": 1.0,
+     "us_pilot": 63.04077599190391
+    },
+    "sparse": {
+     "match": 1.0,
+     "us_pilot": 110.97548542509985
+    },
+    "sliced": {
+     "match": 1.0,
+     "us_pilot": 9.17471149797361,
+     "us": 8.56370222672112,
+     "us_min": 8.242061592442194,
+     "us_max": 9.378905829959065
+    }
+   },
+   "best_kernel": "sliced",
+   "cpu_match": 1.0,
+   "cpu_us_per_sample": 8.56370222672112,
+   "cpu_us_min": 8.242061592442194,
+   "cpu_us_max": 9.378905829959065
+  },
+  {
+   "dataset": "alerce",
+   "tag": "S_LF1_C600",
+   "seed": 0,
+   "clauses_total": 9000,
+   "n_test": 24700,
+   "kernels": {
+    "dense": {
+     "match": 1.0,
+     "us_pilot": 108.84670287449309
+    },
+    "sparse": {
+     "match": 1.0,
+     "us_pilot": 163.65548008097176
+    },
+    "sliced": {
+     "match": 1.0,
+     "us_pilot": 10.56204959514029,
+     "us": 10.606069574898793,
+     "us_min": 10.45772842105303,
+     "us_max": 10.776531437247208
+    }
+   },
+   "best_kernel": "sliced",
+   "cpu_match": 1.0,
+   "cpu_us_per_sample": 10.606069574898793,
+   "cpu_us_min": 10.45772842105303,
+   "cpu_us_max": 10.776531437247208
+  },
+  {
+   "dataset": "alerce",
+   "tag": "S_LF1_C600",
+   "seed": 1,
+   "clauses_total": 9000,
+   "n_test": 24700,
+   "kernels": {
+    "dense": {
+     "match": 1.0,
+     "us_pilot": 131.34752753036415
+    },
+    "sparse": {
+     "match": 1.0,
+     "us_pilot": 172.11833939271347
+    },
+    "sliced": {
+     "match": 1.0,
+     "us_pilot": 10.830103724696423,
+     "us": 10.59704261133622,
+     "us_min": 10.533475931173772,
+     "us_max": 10.792841619433135
+    }
+   },
+   "best_kernel": "sliced",
+   "cpu_match": 1.0,
+   "cpu_us_per_sample": 10.59704261133622,
+   "cpu_us_min": 10.533475931173772,
+   "cpu_us_max": 10.792841619433135
+  },
+  {
+   "dataset": "alerce",
+   "tag": "S_LF1_C600",
+   "seed": 2,
+   "clauses_total": 9000,
+   "n_test": 24700,
+   "kernels": {
+    "dense": {
+     "match": 1.0,
+     "us_pilot": 114.4028695951416
+    },
+    "sparse": {
+     "match": 1.0,
+     "us_pilot": 132.0251476518222
+    },
+    "sliced": {
+     "match": 1.0,
+     "us_pilot": 8.357305101215292,
+     "us": 10.634359736842805,
+     "us_min": 8.433747516869179,
+     "us_max": 10.80531512145755
+    }
+   },
+   "best_kernel": "sliced",
+   "cpu_match": 1.0,
+   "cpu_us_per_sample": 10.634359736842805,
+   "cpu_us_min": 8.433747516869179,
+   "cpu_us_max": 10.80531512145755
+  },
+  {
+   "dataset": "alerce",
+   "tag": "V_C1000",
+   "seed": 0,
+   "clauses_total": 15000,
+   "n_test": 24700,
+   "kernels": {
+    "dense": {
+     "match": 1.0,
+     "us_pilot": 228.34176182186178
+    },
+    "sparse": {
+     "match": 1.0,
+     "us_pilot": 542.3228026720626
+    },
+    "sliced": {
+     "match": 1.0,
+     "us_pilot": 28.205723562750755,
+     "us": 27.963681862344785,
+     "us_min": 23.242224008097153,
+     "us_max": 30.07125275303684
+    }
+   },
+   "best_kernel": "sliced",
+   "cpu_match": 1.0,
+   "cpu_us_per_sample": 27.963681862344785,
+   "cpu_us_min": 23.242224008097153,
+   "cpu_us_max": 30.07125275303684
+  },
+  {
+   "dataset": "alerce",
+   "tag": "V_C200",
+   "seed": 0,
+   "clauses_total": 3000,
+   "n_test": 24700,
+   "kernels": {
+    "dense": {
+     "match": 1.0,
+     "us_pilot": 27.2947428744937
+    },
+    "sparse": {
+     "match": 1.0,
+     "us_pilot": 111.53191048582985
+    },
+    "sliced": {
+     "match": 1.0,
+     "us_pilot": 11.310782672063555,
+     "us": 11.043500242914137,
+     "us_min": 10.903503603240667,
+     "us_max": 11.242707105262976
+    }
+   },
+   "best_kernel": "sliced",
+   "cpu_match": 1.0,
+   "cpu_us_per_sample": 11.043500242914137,
+   "cpu_us_min": 10.903503603240667,
+   "cpu_us_max": 11.242707105262976
+  },
+  {
+   "dataset": "alerce",
+   "tag": "V_C200",
+   "seed": 1,
+   "clauses_total": 3000,
+   "n_test": 24700,
+   "kernels": {
+    "dense": {
+     "match": 1.0,
+     "us_pilot": 27.170328178138554
+    },
+    "sparse": {
+     "match": 1.0,
+     "us_pilot": 113.21992145749005
+    },
+    "sliced": {
+     "match": 1.0,
+     "us_pilot": 13.132376153846776,
+     "us": 13.794571417004772,
+     "us_min": 13.441373238868396,
+     "us_max": 14.037198603237288
+    }
+   },
+   "best_kernel": "sliced",
+   "cpu_match": 1.0,
+   "cpu_us_per_sample": 13.794571417004772,
+   "cpu_us_min": 13.441373238868396,
+   "cpu_us_max": 14.037198603237288
+  },
+  {
+   "dataset": "alerce",
+   "tag": "V_C200",
+   "seed": 2,
+   "clauses_total": 3000,
+   "n_test": 24700,
+   "kernels": {
+    "dense": {
+     "match": 1.0,
+     "us_pilot": 27.71258404858202
+    },
+    "sparse": {
+     "match": 1.0,
+     "us_pilot": 108.40117882591092
+    },
+    "sliced": {
+     "match": 1.0,
+     "us_pilot": 11.53632878542527,
+     "us": 11.716767368421468,
+     "us_min": 11.527515910930829,
+     "us_max": 11.922209170040649
+    }
+   },
+   "best_kernel": "sliced",
+   "cpu_match": 1.0,
+   "cpu_us_per_sample": 11.716767368421468,
+   "cpu_us_min": 11.527515910930829,
+   "cpu_us_max": 11.922209170040649
+  },
+  {
+   "dataset": "nslkdd",
+   "tag": "F1_C2",
+   "seed": 0,
+   "clauses_total": 46,
+   "n_test": 18794,
+   "kernels": {
+    "dense": {
+     "match": 1.0,
+     "us_pilot": 0.2387169309347214,
+     "us": 0.21877376063515325,
+     "us_min": 0.20752061848867095,
+     "us_max": 0.22874496452314272
+    },
+    "sparse": {
+     "match": 1.0,
+     "us_pilot": 9.075067202296582
+    },
+    "sliced": {
+     "match": 1.0,
+     "us_pilot": 1.0745390550176854
+    }
+   },
+   "best_kernel": "dense",
+   "cpu_match": 1.0,
+   "cpu_us_per_sample": 0.21877376063515325,
+   "cpu_us_min": 0.20752061848867095,
+   "cpu_us_max": 0.22874496452314272
+  },
+  {
+   "dataset": "nslkdd",
+   "tag": "F1_C2",
+   "seed": 1,
+   "clauses_total": 46,
+   "n_test": 18794,
+   "kernels": {
+    "dense": {
+     "match": 1.0,
+     "us_pilot": 0.3491142917932314,
+     "us": 0.21831329540119654,
+     "us_min": 0.18455372037297413,
+     "us_max": 0.2190582602225573
+    },
+    "sparse": {
+     "match": 1.0,
+     "us_pilot": 9.63588757050242
+    },
+    "sliced": {
+     "match": 1.0,
+     "us_pilot": 1.1065259125234435
+    }
+   },
+   "best_kernel": "dense",
+   "cpu_match": 1.0,
+   "cpu_us_per_sample": 0.21831329540119654,
+   "cpu_us_min": 0.18455372037297413,
+   "cpu_us_max": 0.2190582602225573
+  },
+  {
+   "dataset": "nslkdd",
+   "tag": "F1_C2",
+   "seed": 2,
+   "clauses_total": 46,
+   "n_test": 18794,
+   "kernels": {
+    "dense": {
+     "match": 1.0,
+     "us_pilot": 0.22395844418764033,
+     "us": 0.2202578579237224,
+     "us_min": 0.18523058038616394,
+     "us_max": 0.22632183819937604
+    },
+    "sparse": {
+     "match": 1.0,
+     "us_pilot": 9.17814451420538
+    },
+    "sliced": {
+     "match": 1.0,
+     "us_pilot": 1.1065150047873524
+    }
+   },
+   "best_kernel": "dense",
+   "cpu_match": 1.0,
+   "cpu_us_per_sample": 0.2202578579237224,
+   "cpu_us_min": 0.18523058038616394,
+   "cpu_us_max": 0.22632183819937604
+  },
+  {
+   "dataset": "nslkdd",
+   "tag": "F2_C10",
+   "seed": 0,
+   "clauses_total": 230,
+   "n_test": 18794,
+   "kernels": {
+    "dense": {
+     "match": 1.0,
+     "us_pilot": 0.9088688943245465,
+     "us": 0.9152413039623059,
+     "us_min": 0.8961041839593642,
+     "us_max": 0.9240457831368568
+    },
+    "sparse": {
+     "match": 1.0,
+     "us_pilot": 33.6581083856574
+    },
+    "sliced": {
+     "match": 1.0,
+     "us_pilot": 3.058518090880476
+    }
+   },
+   "best_kernel": "dense",
+   "cpu_match": 1.0,
+   "cpu_us_per_sample": 0.9152413039623059,
+   "cpu_us_min": 0.8961041839593642,
+   "cpu_us_max": 0.9240457831368568
+  },
+  {
+   "dataset": "nslkdd",
+   "tag": "F2_C10",
+   "seed": 1,
+   "clauses_total": 230,
+   "n_test": 18794,
+   "kernels": {
+    "dense": {
+     "match": 1.0,
+     "us_pilot": 0.8918651697371623,
+     "us": 0.7360370604189974,
+     "us_min": 0.7145526693850648,
+     "us_max": 0.917492783830596
+    },
+    "sparse": {
+     "match": 1.0,
+     "us_pilot": 32.30931706928024
+    },
+    "sliced": {
+     "match": 1.0,
+     "us_pilot": 3.1270757688652098
+    }
+   },
+   "best_kernel": "dense",
+   "cpu_match": 1.0,
+   "cpu_us_per_sample": 0.7360370604189974,
+   "cpu_us_min": 0.7145526693850648,
+   "cpu_us_max": 0.917492783830596
+  },
+  {
+   "dataset": "nslkdd",
+   "tag": "F2_C10",
+   "seed": 2,
+   "clauses_total": 230,
+   "n_test": 18794,
+   "kernels": {
+    "dense": {
+     "match": 1.0,
+     "us_pilot": 0.9488102053886975,
+     "us": 0.9355766770761097,
+     "us_min": 0.9224939599212285,
+     "us_max": 0.9416864443165135
+    },
+    "sparse": {
+     "match": 1.0,
+     "us_pilot": 33.600413216981224
+    },
+    "sliced": {
+     "match": 1.0,
+     "us_pilot": 3.1881737256534235
+    }
+   },
+   "best_kernel": "dense",
+   "cpu_match": 1.0,
+   "cpu_us_per_sample": 0.9355766770761097,
+   "cpu_us_min": 0.9224939599212285,
+   "cpu_us_max": 0.9416864443165135
+  },
+  {
+   "dataset": "nslkdd",
+   "tag": "F3_C20",
+   "seed": 0,
+   "clauses_total": 460,
+   "n_test": 18794,
+   "kernels": {
+    "dense": {
+     "match": 1.0,
+     "us_pilot": 2.237679844632648,
+     "us": 2.280075524990242,
+     "us_min": 2.2513684420560343,
+     "us_max": 2.3276095562414563
+    },
+    "sparse": {
+     "match": 1.0,
+     "us_pilot": 35.37807587527998
+    },
+    "sliced": {
+     "match": 1.0,
+     "us_pilot": 4.035177982336323
+    }
+   },
+   "best_kernel": "dense",
+   "cpu_match": 1.0,
+   "cpu_us_per_sample": 2.280075524990242,
+   "cpu_us_min": 2.2513684420560343,
+   "cpu_us_max": 2.3276095562414563
+  },
+  {
+   "dataset": "nslkdd",
+   "tag": "F3_C20",
+   "seed": 1,
+   "clauses_total": 460,
+   "n_test": 18794,
+   "kernels": {
+    "dense": {
+     "match": 1.0,
+     "us_pilot": 2.1801906991603115,
+     "us": 2.236699159305985,
+     "us_min": 2.2314596192049887,
+     "us_max": 2.237192995991828
+    },
+    "sparse": {
+     "match": 1.0,
+     "us_pilot": 35.474909811643634
+    },
+    "sliced": {
+     "match": 1.0,
+     "us_pilot": 4.037690167076433
+    }
+   },
+   "best_kernel": "dense",
+   "cpu_match": 1.0,
+   "cpu_us_per_sample": 2.236699159305985,
+   "cpu_us_min": 2.2314596192049887,
+   "cpu_us_max": 2.237192995991828
+  },
+  {
+   "dataset": "nslkdd",
+   "tag": "F3_C20",
+   "seed": 2,
+   "clauses_total": 460,
+   "n_test": 18794,
+   "kernels": {
+    "dense": {
+     "match": 1.0,
+     "us_pilot": 3.2156242417839245,
+     "us": 2.596189407644472,
+     "us_min": 2.2691157594623146,
+     "us_max": 2.7809742311377352
+    },
+    "sparse": {
+     "match": 1.0,
+     "us_pilot": 41.21182100670714
+    },
+    "sliced": {
+     "match": 1.0,
+     "us_pilot": 5.011307864206143
+    }
+   },
+   "best_kernel": "dense",
+   "cpu_match": 1.0,
+   "cpu_us_per_sample": 2.596189407644472,
+   "cpu_us_min": 2.2691157594623146,
+   "cpu_us_max": 2.7809742311377352
+  },
+  {
+   "dataset": "nslkdd",
+   "tag": "F4_C40",
+   "seed": 0,
+   "clauses_total": 920,
+   "n_test": 18794,
+   "kernels": {
+    "dense": {
+     "match": 1.0,
+     "us_pilot": 4.586492071939226,
+     "us": 4.977827941541364,
+     "us_min": 4.835193607889655,
+     "us_max": 5.48063637331104
+    },
+    "sparse": {
+     "match": 1.0,
+     "us_pilot": 66.8418261147157
+    },
+    "sliced": {
+     "match": 1.0,
+     "us_pilot": 7.576465414489714
+    }
+   },
+   "best_kernel": "dense",
+   "cpu_match": 1.0,
+   "cpu_us_per_sample": 4.977827941541364,
+   "cpu_us_min": 4.835193607889655,
+   "cpu_us_max": 5.48063637331104
+  },
+  {
+   "dataset": "nslkdd",
+   "tag": "F4_C40",
+   "seed": 1,
+   "clauses_total": 920,
+   "n_test": 18794,
+   "kernels": {
+    "dense": {
+     "match": 1.0,
+     "us_pilot": 4.490633393636632,
+     "us": 4.6802868113938745,
+     "us_min": 4.636484365578055,
+     "us_max": 5.092834175800157
+    },
+    "sparse": {
+     "match": 1.0,
+     "us_pilot": 62.914388368631776
+    },
+    "sliced": {
+     "match": 1.0,
+     "us_pilot": 6.247579865914139,
+     "us": 6.583450250079609,
+     "us_min": 5.9193265723103945,
+     "us_max": 7.57290868096132
+    }
+   },
+   "best_kernel": "dense",
+   "cpu_match": 1.0,
+   "cpu_us_per_sample": 4.6802868113938745,
+   "cpu_us_min": 4.636484365578055,
+   "cpu_us_max": 5.092834175800157
+  },
+  {
+   "dataset": "nslkdd",
+   "tag": "F4_C40",
+   "seed": 2,
+   "clauses_total": 920,
+   "n_test": 18794,
+   "kernels": {
+    "dense": {
+     "match": 1.0,
+     "us_pilot": 3.642233053101516,
+     "us": 4.678959499485731,
+     "us_min": 4.605081151786195,
+     "us_max": 5.094112801958227
+    },
+    "sparse": {
+     "match": 1.0,
+     "us_pilot": 65.0397907842921
+    },
+    "sliced": {
+     "match": 1.0,
+     "us_pilot": 6.621677184212385
+    }
+   },
+   "best_kernel": "dense",
+   "cpu_match": 1.0,
+   "cpu_us_per_sample": 4.678959499485731,
+   "cpu_us_min": 4.605081151786195,
+   "cpu_us_max": 5.094112801958227
+  },
+  {
+   "dataset": "nslkdd",
+   "tag": "F5_C100",
+   "seed": 0,
+   "clauses_total": 2300,
+   "n_test": 18794,
+   "kernels": {
+    "dense": {
+     "match": 1.0,
+     "us_pilot": 11.552018942212934,
+     "us": 11.264567024935438,
+     "us_min": 11.025391667553254,
+     "us_max": 11.779278705969261
+    },
+    "sparse": {
+     "match": 1.0,
+     "us_pilot": 101.16125109076866
+    },
+    "sliced": {
+     "match": 1.0,
+     "us_pilot": 13.816381664362158,
+     "us": 14.193294056614253,
+     "us_min": 13.153178869142852,
+     "us_max": 14.611086437161557
+    }
+   },
+   "best_kernel": "dense",
+   "cpu_match": 1.0,
+   "cpu_us_per_sample": 11.264567024935438,
+   "cpu_us_min": 11.025391667553254,
+   "cpu_us_max": 11.779278705969261
+  },
+  {
+   "dataset": "nslkdd",
+   "tag": "F5_C100",
+   "seed": 1,
+   "clauses_total": 2300,
+   "n_test": 18794,
+   "kernels": {
+    "dense": {
+     "match": 1.0,
+     "us_pilot": 11.507129243377943,
+     "us": 11.530327267569072,
+     "us_min": 9.203328207582933,
+     "us_max": 11.659683090348201
+    },
+    "sparse": {
+     "match": 1.0,
+     "us_pilot": 92.14286841544724
+    },
+    "sliced": {
+     "match": 1.0,
+     "us_pilot": 10.91638538895319,
+     "us": 13.804508460147687,
+     "us_min": 13.739897334253463,
+     "us_max": 13.994781738853392
+    }
+   },
+   "best_kernel": "dense",
+   "cpu_match": 1.0,
+   "cpu_us_per_sample": 11.530327267569072,
+   "cpu_us_min": 9.203328207582933,
+   "cpu_us_max": 11.659683090348201
+  },
+  {
+   "dataset": "nslkdd",
+   "tag": "F5_C100",
+   "seed": 2,
+   "clauses_total": 2300,
+   "n_test": 18794,
+   "kernels": {
+    "dense": {
+     "match": 1.0,
+     "us_pilot": 12.77094264127316,
+     "us": 11.73468113937068,
+     "us_min": 9.499501915505137,
+     "us_max": 12.590119435280588
+    },
+    "sparse": {
+     "match": 1.0,
+     "us_pilot": 97.98554240714917
+    },
+    "sliced": {
+     "match": 1.0,
+     "us_pilot": 15.291187027774162,
+     "us": 13.862353038202542,
+     "us_min": 12.114512113794763,
+     "us_max": 14.045901005639228
+    }
+   },
+   "best_kernel": "dense",
+   "cpu_match": 1.0,
+   "cpu_us_per_sample": 11.73468113937068,
+   "cpu_us_min": 9.499501915505137,
+   "cpu_us_max": 12.590119435280588
+  },
+  {
+   "dataset": "nslkdd",
+   "tag": "S_LF1_C1000",
+   "seed": 0,
+   "clauses_total": 23000,
+   "n_test": 18794,
+   "kernels": {
+    "dense": {
+     "match": 1.0,
+     "us_pilot": 121.25008220708618
+    },
+    "sparse": {
+     "match": 1.0,
+     "us_pilot": 435.4175507608866
+    },
+    "sliced": {
+     "match": 1.0,
+     "us_pilot": 16.629044269450254,
+     "us": 16.615724885599732,
+     "us_min": 15.394598036608185,
+     "us_max": 16.660630493774672
+    }
+   },
+   "best_kernel": "sliced",
+   "cpu_match": 1.0,
+   "cpu_us_per_sample": 16.615724885599732,
+   "cpu_us_min": 15.394598036608185,
+   "cpu_us_max": 16.660630493774672
+  },
+  {
+   "dataset": "nslkdd",
+   "tag": "S_LF1_C200",
+   "seed": 0,
+   "clauses_total": 4600,
+   "n_test": 18794,
+   "kernels": {
+    "dense": {
+     "match": 1.0,
+     "us_pilot": 24.09204426945188
+    },
+    "sparse": {
+     "match": 1.0,
+     "us_pilot": 63.3319686602102
+    },
+    "sliced": {
+     "match": 1.0,
+     "us_pilot": 4.017612908372346,
+     "us": 4.2563004910384175,
+     "us_min": 3.9702994572737764,
+     "us_max": 4.340953047325052
+    }
+   },
+   "best_kernel": "sliced",
+   "cpu_match": 1.0,
+   "cpu_us_per_sample": 4.2563004910384175,
+   "cpu_us_min": 3.9702994572737764,
+   "cpu_us_max": 4.340953047325052
+  },
+  {
+   "dataset": "nslkdd",
+   "tag": "S_LF1_C200",
+   "seed": 1,
+   "clauses_total": 4600,
+   "n_test": 18794,
+   "kernels": {
+    "dense": {
+     "match": 1.0,
+     "us_pilot": 24.20330669362632
+    },
+    "sparse": {
+     "match": 1.0,
+     "us_pilot": 70.88882143237927
+    },
+    "sliced": {
+     "match": 1.0,
+     "us_pilot": 3.8421720229783904,
+     "us": 3.8258557898418966,
+     "us_min": 3.01569104797081,
+     "us_max": 3.8525840541802223
+    }
+   },
+   "best_kernel": "sliced",
+   "cpu_match": 1.0,
+   "cpu_us_per_sample": 3.8258557898418966,
+   "cpu_us_min": 3.01569104797081,
+   "cpu_us_max": 3.8525840541802223
+  },
+  {
+   "dataset": "nslkdd",
+   "tag": "S_LF1_C200",
+   "seed": 2,
+   "clauses_total": 4600,
+   "n_test": 18794,
+   "kernels": {
+    "dense": {
+     "match": 1.0,
+     "us_pilot": 20.051382515699476
+    },
+    "sparse": {
+     "match": 1.0,
+     "us_pilot": 54.81417181015298
+    },
+    "sliced": {
+     "match": 1.0,
+     "us_pilot": 2.992968979473121,
+     "us": 3.2249778002441656,
+     "us_min": 2.9691991179219266,
+     "us_max": 3.76665991805882
+    }
+   },
+   "best_kernel": "sliced",
+   "cpu_match": 1.0,
+   "cpu_us_per_sample": 3.2249778002441656,
+   "cpu_us_min": 2.9691991179219266,
+   "cpu_us_max": 3.76665991805882
+  },
+  {
+   "dataset": "nslkdd",
+   "tag": "S_LF1_C400",
+   "seed": 0,
+   "clauses_total": 9200,
+   "n_test": 18794,
+   "kernels": {
+    "dense": {
+     "match": 1.0,
+     "us_pilot": 51.65659034798057
+    },
+    "sparse": {
+     "match": 1.0,
+     "us_pilot": 175.02891034372803
+    },
+    "sliced": {
+     "match": 1.0,
+     "us_pilot": 7.981903479836373,
+     "us": 7.984565273490863,
+     "us_min": 7.832509723847605,
+     "us_max": 8.00365210971676
+    }
+   },
+   "best_kernel": "sliced",
+   "cpu_match": 1.0,
+   "cpu_us_per_sample": 7.984565273490863,
+   "cpu_us_min": 7.832509723847605,
+   "cpu_us_max": 8.00365210971676
+  },
+  {
+   "dataset": "nslkdd",
+   "tag": "S_LF1_C400",
+   "seed": 1,
+   "clauses_total": 9200,
+   "n_test": 18794,
+   "kernels": {
+    "dense": {
+     "match": 1.0,
+     "us_pilot": 52.72650947110412
+    },
+    "sparse": {
+     "match": 1.0,
+     "us_pilot": 150.37366893690205
+    },
+    "sliced": {
+     "match": 1.0,
+     "us_pilot": 6.928983984254983,
+     "us": 6.930626290306012,
+     "us_min": 6.592478227092064,
+     "us_max": 7.630672568373661
+    }
+   },
+   "best_kernel": "sliced",
+   "cpu_match": 1.0,
+   "cpu_us_per_sample": 6.930626290306012,
+   "cpu_us_min": 6.592478227092064,
+   "cpu_us_max": 7.630672568373661
+  },
+  {
+   "dataset": "nslkdd",
+   "tag": "S_LF1_C400",
+   "seed": 2,
+   "clauses_total": 9200,
+   "n_test": 18794,
+   "kernels": {
+    "dense": {
+     "match": 1.0,
+     "us_pilot": 51.463245025003786
+    },
+    "sparse": {
+     "match": 1.0,
+     "us_pilot": 152.04567989782984
+    },
+    "sliced": {
+     "match": 1.0,
+     "us_pilot": 7.995920293719031,
+     "us": 7.592014632327819,
+     "us_min": 7.25362482707173,
+     "us_max": 7.866028626158455
+    }
+   },
+   "best_kernel": "sliced",
+   "cpu_match": 1.0,
+   "cpu_us_per_sample": 7.592014632327819,
+   "cpu_us_min": 7.25362482707173,
+   "cpu_us_max": 7.866028626158455
+  },
+  {
+   "dataset": "nslkdd",
+   "tag": "S_LF1_C600",
+   "seed": 0,
+   "clauses_total": 13800,
+   "n_test": 18794,
+   "kernels": {
+    "dense": {
+     "match": 1.0,
+     "us_pilot": 80.59175736937597
+    },
+    "sparse": {
+     "match": 1.0,
+     "us_pilot": 275.28894998403604
+    },
+    "sliced": {
+     "match": 1.0,
+     "us_pilot": 10.898740768331846,
+     "us": 9.607767496717079,
+     "us_min": 8.529930762474713,
+     "us_max": 10.907836011489453
+    }
+   },
+   "best_kernel": "sliced",
+   "cpu_match": 1.0,
+   "cpu_us_per_sample": 9.607767496717079,
+   "cpu_us_min": 8.529930762474713,
+   "cpu_us_max": 10.907836011489453
+  },
+  {
+   "dataset": "nslkdd",
+   "tag": "S_LF1_C600",
+   "seed": 1,
+   "clauses_total": 13800,
+   "n_test": 18794,
+   "kernels": {
+    "dense": {
+     "match": 1.0,
+     "us_pilot": 75.93119399808495
+    },
+    "sparse": {
+     "match": 1.0,
+     "us_pilot": 266.2209278493166
+    },
+    "sliced": {
+     "match": 1.0,
+     "us_pilot": 10.97840316059362,
+     "us": 10.839755755383052,
+     "us_min": 9.22552798765273,
+     "us_max": 11.842069880456002
+    }
+   },
+   "best_kernel": "sliced",
+   "cpu_match": 1.0,
+   "cpu_us_per_sample": 10.839755755383052,
+   "cpu_us_min": 9.22552798765273,
+   "cpu_us_max": 11.842069880456002
+  },
+  {
+   "dataset": "nslkdd",
+   "tag": "S_LF1_C600",
+   "seed": 2,
+   "clauses_total": 13800,
+   "n_test": 18794,
+   "kernels": {
+    "dense": {
+     "match": 1.0,
+     "us_pilot": 80.31461232308114
+    },
+    "sparse": {
+     "match": 1.0,
+     "us_pilot": 272.5202985527332
+    },
+    "sliced": {
+     "match": 1.0,
+     "us_pilot": 11.427253378732605,
+     "us": 11.951276737254808,
+     "us_min": 11.269308999327244,
+     "us_max": 12.346335284312001
+    }
+   },
+   "best_kernel": "sliced",
+   "cpu_match": 1.0,
+   "cpu_us_per_sample": 11.951276737254808,
+   "cpu_us_min": 11.269308999327244,
+   "cpu_us_max": 12.346335284312001
+  },
+  {
+   "dataset": "nslkdd",
+   "tag": "V_C1000",
+   "seed": 0,
+   "clauses_total": 23000,
+   "n_test": 18794,
+   "kernels": {
+    "dense": {
+     "match": 1.0,
+     "us_pilot": 102.04320559752472
+    },
+    "sparse": {
+     "match": 1.0,
+     "us_pilot": 846.1832421517391
+    },
+    "sliced": {
+     "match": 1.0,
+     "us_pilot": 31.87640550175087,
+     "us": 32.085465361287405,
+     "us_min": 31.894775779511118,
+     "us_max": 38.12044381184665
+    }
+   },
+   "best_kernel": "sliced",
+   "cpu_match": 1.0,
+   "cpu_us_per_sample": 32.085465361287405,
+   "cpu_us_min": 31.894775779511118,
+   "cpu_us_max": 38.12044381184665
+  },
+  {
+   "dataset": "nslkdd",
+   "tag": "V_C200",
+   "seed": 0,
+   "clauses_total": 4600,
+   "n_test": 18794,
+   "kernels": {
+    "dense": {
+     "match": 1.0,
+     "us_pilot": 15.447146961787086
+    },
+    "sparse": {
+     "match": 1.0,
+     "us_pilot": 133.08264728104686
+    },
+    "sliced": {
+     "match": 1.0,
+     "us_pilot": 7.498605086725823,
+     "us": 7.469785596468685,
+     "us_min": 7.46032755134558,
+     "us_max": 9.198581794719425
+    }
+   },
+   "best_kernel": "sliced",
+   "cpu_match": 1.0,
+   "cpu_us_per_sample": 7.469785596468685,
+   "cpu_us_min": 7.46032755134558,
+   "cpu_us_max": 9.198581794719425
+  },
+  {
+   "dataset": "nslkdd",
+   "tag": "V_C200",
+   "seed": 1,
+   "clauses_total": 4600,
+   "n_test": 18794,
+   "kernels": {
+    "dense": {
+     "match": 1.0,
+     "us_pilot": 17.447859210377366
+    },
+    "sparse": {
+     "match": 1.0,
+     "us_pilot": 170.9254291795232
+    },
+    "sliced": {
+     "match": 1.0,
+     "us_pilot": 9.785110886453948,
+     "us": 10.106026426877053,
+     "us_min": 9.755791192223864,
+     "us_max": 10.531261537369664
+    }
+   },
+   "best_kernel": "sliced",
+   "cpu_match": 1.0,
+   "cpu_us_per_sample": 10.106026426877053,
+   "cpu_us_min": 9.755791192223864,
+   "cpu_us_max": 10.531261537369664
+  },
+  {
+   "dataset": "nslkdd",
+   "tag": "V_C200",
+   "seed": 2,
+   "clauses_total": 4600,
+   "n_test": 18794,
+   "kernels": {
+    "dense": {
+     "match": 1.0,
+     "us_pilot": 19.355461530280948
+    },
+    "sparse": {
+     "match": 1.0,
+     "us_pilot": 173.29274912206236
+    },
+    "sliced": {
+     "match": 1.0,
+     "us_pilot": 9.922720868363422,
+     "us": 9.924810666524893,
+     "us_min": 9.826391436985611,
+     "us_max": 9.954932939593508
+    }
+   },
+   "best_kernel": "sliced",
+   "cpu_match": 1.0,
+   "cpu_us_per_sample": 9.924810666524893,
+   "cpu_us_min": 9.826391436985611,
+   "cpu_us_max": 9.954932939593508
+  },
+  {
+   "dataset": "wos",
+   "tag": "F1_C2",
+   "seed": 0,
+   "clauses_total": 14,
+   "n_test": 9397,
+   "kernels": {
+    "dense": {
+     "match": 1.0,
+     "us_pilot": 4.4927435351888585,
+     "us": 3.074322449245399,
+     "us_min": 2.714977992976875,
+     "us_max": 3.348018237203193
+    },
+    "sparse": {
+     "match": 1.0,
+     "us_pilot": 15.102804192833238
+    },
+    "sliced": {
+     "match": 1.0,
+     "us_pilot": 25.936931361051712
+    }
+   },
+   "best_kernel": "dense",
+   "cpu_match": 1.0,
+   "cpu_us_per_sample": 3.074322449245399,
+   "cpu_us_min": 2.714977992976875,
+   "cpu_us_max": 3.348018237203193
+  },
+  {
+   "dataset": "wos",
+   "tag": "F1_C2",
+   "seed": 1,
+   "clauses_total": 14,
+   "n_test": 9397,
+   "kernels": {
+    "dense": {
+     "match": 1.0,
+     "us_pilot": 4.433681281254682,
+     "us": 3.669045560639276,
+     "us_min": 3.350292792912381,
+     "us_max": 3.92426670365884
+    },
+    "sparse": {
+     "match": 1.0,
+     "us_pilot": 16.578212727467076
+    },
+    "sliced": {
+     "match": 1.0,
+     "us_pilot": 26.01055432582747
+    }
+   },
+   "best_kernel": "dense",
+   "cpu_match": 1.0,
+   "cpu_us_per_sample": 3.669045560639276,
+   "cpu_us_min": 3.350292792912381,
+   "cpu_us_max": 3.92426670365884
+  },
+  {
+   "dataset": "wos",
+   "tag": "F1_C2",
+   "seed": 2,
+   "clauses_total": 14,
+   "n_test": 9397,
+   "kernels": {
+    "dense": {
+     "match": 1.0,
+     "us_pilot": 4.453272746622241,
+     "us": 3.19915355964614,
+     "us_min": 3.1767782208334587,
+     "us_max": 3.840673140364097
+    },
+    "sparse": {
+     "match": 1.0,
+     "us_pilot": 17.630949771220116
+    },
+    "sliced": {
+     "match": 1.0,
+     "us_pilot": 23.620723848036835
+    }
+   },
+   "best_kernel": "dense",
+   "cpu_match": 1.0,
+   "cpu_us_per_sample": 3.19915355964614,
+   "cpu_us_min": 3.1767782208334587,
+   "cpu_us_max": 3.840673140364097
+  },
+  {
+   "dataset": "wos",
+   "tag": "F2_C10",
+   "seed": 0,
+   "clauses_total": 70,
+   "n_test": 9397,
+   "kernels": {
+    "dense": {
+     "match": 1.0,
+     "us_pilot": 7.663135575179772,
+     "us": 6.476227424828311,
+     "us_min": 5.356672400282326,
+     "us_max": 7.720115675218645
+    },
+    "sparse": {
+     "match": 1.0,
+     "us_pilot": 43.01519846759555
+    },
+    "sliced": {
+     "match": 1.0,
+     "us_pilot": 23.584422368843775
+    }
+   },
+   "best_kernel": "dense",
+   "cpu_match": 1.0,
+   "cpu_us_per_sample": 6.476227424828311,
+   "cpu_us_min": 5.356672400282326,
+   "cpu_us_max": 7.720115675218645
+  },
+  {
+   "dataset": "wos",
+   "tag": "F2_C10",
+   "seed": 1,
+   "clauses_total": 70,
+   "n_test": 9397,
+   "kernels": {
+    "dense": {
+     "match": 1.0,
+     "us_pilot": 7.605527721618377,
+     "us": 7.798299791727572,
+     "us_min": 7.488442760988898,
+     "us_max": 8.261184861428815
+    },
+    "sparse": {
+     "match": 1.0,
+     "us_pilot": 48.51008098326855
+    },
+    "sliced": {
+     "match": 1.0,
+     "us_pilot": 28.3295495370825
+    }
+   },
+   "best_kernel": "dense",
+   "cpu_match": 1.0,
+   "cpu_us_per_sample": 7.798299791727572,
+   "cpu_us_min": 7.488442760988898,
+   "cpu_us_max": 8.261184861428815
+  },
+  {
+   "dataset": "wos",
+   "tag": "F2_C10",
+   "seed": 2,
+   "clauses_total": 70,
+   "n_test": 9397,
+   "kernels": {
+    "dense": {
+     "match": 1.0,
+     "us_pilot": 6.461884856876502,
+     "us": 7.4735238240921555,
+     "us_min": 7.321208976270566,
+     "us_max": 7.981639299775007
+    },
+    "sparse": {
+     "match": 1.0,
+     "us_pilot": 43.90820730020736
+    },
+    "sliced": {
+     "match": 1.0,
+     "us_pilot": 33.80529051824962
+    }
+   },
+   "best_kernel": "dense",
+   "cpu_match": 1.0,
+   "cpu_us_per_sample": 7.4735238240921555,
+   "cpu_us_min": 7.321208976270566,
+   "cpu_us_max": 7.981639299775007
+  },
+  {
+   "dataset": "wos",
+   "tag": "F3_C20",
+   "seed": 0,
+   "clauses_total": 140,
+   "n_test": 9397,
+   "kernels": {
+    "dense": {
+     "match": 1.0,
+     "us_pilot": 12.059439076304285,
+     "us": 11.59340034053144,
+     "us_min": 11.42590867298086,
+     "us_max": 12.752226348834167
+    },
+    "sparse": {
+     "match": 1.0,
+     "us_pilot": 53.73198520805121
+    },
+    "sliced": {
+     "match": 1.0,
+     "us_pilot": 29.436174843054992
+    }
+   },
+   "best_kernel": "dense",
+   "cpu_match": 1.0,
+   "cpu_us_per_sample": 11.59340034053144,
+   "cpu_us_min": 11.42590867298086,
+   "cpu_us_max": 12.752226348834167
+  },
+  {
+   "dataset": "wos",
+   "tag": "F3_C20",
+   "seed": 1,
+   "clauses_total": 140,
+   "n_test": 9397,
+   "kernels": {
+    "dense": {
+     "match": 1.0,
+     "us_pilot": 12.612745769908038,
+     "us": 11.703304011915174,
+     "us_min": 10.318762388702954,
+     "us_max": 12.29390637437298
+    },
+    "sparse": {
+     "match": 1.0,
+     "us_pilot": 63.75164658934937
+    },
+    "sliced": {
+     "match": 1.0,
+     "us_pilot": 34.627672980750646
+    }
+   },
+   "best_kernel": "dense",
+   "cpu_match": 1.0,
+   "cpu_us_per_sample": 11.703304011915174,
+   "cpu_us_min": 10.318762388702954,
+   "cpu_us_max": 12.29390637437298
+  },
+  {
+   "dataset": "wos",
+   "tag": "F3_C20",
+   "seed": 2,
+   "clauses_total": 140,
+   "n_test": 9397,
+   "kernels": {
+    "dense": {
+     "match": 1.0,
+     "us_pilot": 14.35235224008637,
+     "us": 11.689175502818332,
+     "us_min": 11.45588266467603,
+     "us_max": 11.749653676706428
+    },
+    "sparse": {
+     "match": 1.0,
+     "us_pilot": 60.67662296478161
+    },
+    "sliced": {
+     "match": 1.0,
+     "us_pilot": 28.073132169862237
+    }
+   },
+   "best_kernel": "dense",
+   "cpu_match": 1.0,
+   "cpu_us_per_sample": 11.689175502818332,
+   "cpu_us_min": 11.45588266467603,
+   "cpu_us_max": 11.749653676706428
+  },
+  {
+   "dataset": "wos",
+   "tag": "F4_C40",
+   "seed": 0,
+   "clauses_total": 280,
+   "n_test": 9397,
+   "kernels": {
+    "dense": {
+     "match": 1.0,
+     "us_pilot": 19.395205171855416,
+     "us": 19.947301585606102,
+     "us_min": 19.421913376612483,
+     "us_max": 22.205191621440633
+    },
+    "sparse": {
+     "match": 1.0,
+     "us_pilot": 118.10878514420008
+    },
+    "sliced": {
+     "match": 1.0,
+     "us_pilot": 39.89114568478389
+    }
+   },
+   "best_kernel": "dense",
+   "cpu_match": 1.0,
+   "cpu_us_per_sample": 19.947301585606102,
+   "cpu_us_min": 19.421913376612483,
+   "cpu_us_max": 22.205191621440633
+  },
+  {
+   "dataset": "wos",
+   "tag": "F4_C40",
+   "seed": 1,
+   "clauses_total": 280,
+   "n_test": 9397,
+   "kernels": {
+    "dense": {
+     "match": 1.0,
+     "us_pilot": 21.573219006051108,
+     "us": 19.50735465219581,
+     "us_min": 19.049688446664604,
+     "us_max": 20.803944556770496
+    },
+    "sparse": {
+     "match": 1.0,
+     "us_pilot": 79.29249984037226
+    },
+    "sliced": {
+     "match": 1.0,
+     "us_pilot": 34.626710013843386
+    }
+   },
+   "best_kernel": "dense",
+   "cpu_match": 1.0,
+   "cpu_us_per_sample": 19.50735465219581,
+   "cpu_us_min": 19.049688446664604,
+   "cpu_us_max": 20.803944556770496
+  },
+  {
+   "dataset": "wos",
+   "tag": "F4_C40",
+   "seed": 2,
+   "clauses_total": 280,
+   "n_test": 9397,
+   "kernels": {
+    "dense": {
+     "match": 1.0,
+     "us_pilot": 14.411617963166165,
+     "us": 19.2962178000048,
+     "us_min": 18.705261608316672,
+     "us_max": 19.85836837997901
+    },
+    "sparse": {
+     "match": 1.0,
+     "us_pilot": 66.06460817282876
+    },
+    "sliced": {
+     "match": 1.0,
+     "us_pilot": 32.33763850165101
+    }
+   },
+   "best_kernel": "dense",
+   "cpu_match": 1.0,
+   "cpu_us_per_sample": 19.2962178000048,
+   "cpu_us_min": 18.705261608316672,
+   "cpu_us_max": 19.85836837997901
+  },
+  {
+   "dataset": "wos",
+   "tag": "F5_C100",
+   "seed": 0,
+   "clauses_total": 700,
+   "n_test": 9397,
+   "kernels": {
+    "dense": {
+     "match": 1.0,
+     "us_pilot": 32.13319463659316,
+     "us": 43.69464744066578,
+     "us_min": 42.812434979255286,
+     "us_max": 46.15788416516017
+    },
+    "sparse": {
+     "match": 1.0,
+     "us_pilot": 99.88121815472877
+    },
+    "sliced": {
+     "match": 1.0,
+     "us_pilot": 37.71179344471326,
+     "us": 41.78237001170482,
+     "us_min": 41.147250558697216,
+     "us_max": 42.81973028626762
+    }
+   },
+   "best_kernel": "sliced",
+   "cpu_match": 1.0,
+   "cpu_us_per_sample": 41.78237001170482,
+   "cpu_us_min": 41.147250558697216,
+   "cpu_us_max": 42.81973028626762
+  },
+  {
+   "dataset": "wos",
+   "tag": "F5_C100",
+   "seed": 1,
+   "clauses_total": 700,
+   "n_test": 9397,
+   "kernels": {
+    "dense": {
+     "match": 1.0,
+     "us_pilot": 33.64024177929041,
+     "us": 43.80191364265032,
+     "us_min": 39.115927051184954,
+     "us_max": 45.72322916888279
+    },
+    "sparse": {
+     "match": 1.0,
+     "us_pilot": 133.37611588804157
+    },
+    "sliced": {
+     "match": 1.0,
+     "us_pilot": 41.85081270618431,
+     "us": 43.04800494838585,
+     "us_min": 40.84625534745777,
+     "us_max": 49.583315047358674
+    }
+   },
+   "best_kernel": "sliced",
+   "cpu_match": 1.0,
+   "cpu_us_per_sample": 43.04800494838585,
+   "cpu_us_min": 40.84625534745777,
+   "cpu_us_max": 49.583315047358674
+  },
+  {
+   "dataset": "wos",
+   "tag": "F5_C100",
+   "seed": 2,
+   "clauses_total": 700,
+   "n_test": 9397,
+   "kernels": {
+    "dense": {
+     "match": 1.0,
+     "us_pilot": 45.636993189332145,
+     "us": 44.84045253804632,
+     "us_min": 43.54776077472061,
+     "us_max": 47.322820421419834
+    },
+    "sparse": {
+     "match": 1.0,
+     "us_pilot": 154.5671578163059
+    },
+    "sliced": {
+     "match": 1.0,
+     "us_pilot": 43.38513408534945,
+     "us": 41.396484303501936,
+     "us_min": 37.25315238906643,
+     "us_max": 41.753611844209004
+    }
+   },
+   "best_kernel": "sliced",
+   "cpu_match": 1.0,
+   "cpu_us_per_sample": 41.396484303501936,
+   "cpu_us_min": 37.25315238906643,
+   "cpu_us_max": 41.753611844209004
+  },
+  {
+   "dataset": "wos",
+   "tag": "S_LF1_C200",
+   "seed": 0,
+   "clauses_total": 1400,
+   "n_test": 9397,
+   "kernels": {
+    "dense": {
+     "match": 1.0,
+     "us_pilot": 140.67826157285478
+    },
+    "sparse": {
+     "match": 1.0,
+     "us_pilot": 61.955733957665046
+    },
+    "sliced": {
+     "match": 1.0,
+     "us_pilot": 23.37905012238187,
+     "us": 25.37789322833644,
+     "us_min": 20.910891951338407,
+     "us_max": 27.53731573907496
+    }
+   },
+   "best_kernel": "sliced",
+   "cpu_match": 1.0,
+   "cpu_us_per_sample": 25.37789322833644,
+   "cpu_us_min": 20.910891951338407,
+   "cpu_us_max": 27.53731573907496
+  },
+  {
+   "dataset": "wos",
+   "tag": "S_LF1_C200",
+   "seed": 1,
+   "clauses_total": 1400,
+   "n_test": 9397,
+   "kernels": {
+    "dense": {
+     "match": 1.0,
+     "us_pilot": 135.47946738319976
+    },
+    "sparse": {
+     "match": 1.0,
+     "us_pilot": 80.5974818559149
+    },
+    "sliced": {
+     "match": 1.0,
+     "us_pilot": 30.23377705650591,
+     "us": 26.862575289991337,
+     "us_min": 25.809077365115403,
+     "us_max": 28.88212791317009
+    }
+   },
+   "best_kernel": "sliced",
+   "cpu_match": 1.0,
+   "cpu_us_per_sample": 26.862575289991337,
+   "cpu_us_min": 25.809077365115403,
+   "cpu_us_max": 28.88212791317009
+  },
+  {
+   "dataset": "wos",
+   "tag": "S_LF1_C200",
+   "seed": 2,
+   "clauses_total": 1400,
+   "n_test": 9397,
+   "kernels": {
+    "dense": {
+     "match": 1.0,
+     "us_pilot": 142.69189677557526
+    },
+    "sparse": {
+     "match": 1.0,
+     "us_pilot": 79.23763477704426
+    },
+    "sliced": {
+     "match": 1.0,
+     "us_pilot": 25.523551665421884,
+     "us": 28.22633739491912,
+     "us_min": 21.60556553510462,
+     "us_max": 33.67704208790872
+    }
+   },
+   "best_kernel": "sliced",
+   "cpu_match": 1.0,
+   "cpu_us_per_sample": 28.22633739491912,
+   "cpu_us_min": 21.60556553510462,
+   "cpu_us_max": 33.67704208790872
+  },
+  {
+   "dataset": "wos",
+   "tag": "S_LF1_C400",
+   "seed": 0,
+   "clauses_total": 2800,
+   "n_test": 9397,
+   "kernels": {
+    "dense": {
+     "match": 1.0,
+     "us_pilot": 298.8379894647147
+    },
+    "sparse": {
+     "match": 1.0,
+     "us_pilot": 124.04631414281212
+    },
+    "sliced": {
+     "match": 1.0,
+     "us_pilot": 30.00037405555412,
+     "us": 26.732125146320524,
+     "us_min": 23.833458727964572,
+     "us_max": 28.0177662551843
+    }
+   },
+   "best_kernel": "sliced",
+   "cpu_match": 1.0,
+   "cpu_us_per_sample": 26.732125146320524,
+   "cpu_us_min": 23.833458727964572,
+   "cpu_us_max": 28.0177662551843
+  },
+  {
+   "dataset": "wos",
+   "tag": "S_LF1_C400",
+   "seed": 1,
+   "clauses_total": 2800,
+   "n_test": 9397,
+   "kernels": {
+    "dense": {
+     "match": 1.0,
+     "us_pilot": 306.1224194955689
+    },
+    "sparse": {
+     "match": 1.0,
+     "us_pilot": 173.18816377567714
+    },
+    "sliced": {
+     "match": 1.0,
+     "us_pilot": 35.09023720336134,
+     "us": 29.071770352245345,
+     "us_min": 26.215749671883962,
+     "us_max": 36.10766068957944
+    }
+   },
+   "best_kernel": "sliced",
+   "cpu_match": 1.0,
+   "cpu_us_per_sample": 29.071770352245345,
+   "cpu_us_min": 26.215749671883962,
+   "cpu_us_max": 36.10766068957944
+  },
+  {
+   "dataset": "wos",
+   "tag": "S_LF1_C400",
+   "seed": 2,
+   "clauses_total": 2800,
+   "n_test": 9397,
+   "kernels": {
+    "dense": {
+     "match": 1.0,
+     "us_pilot": 299.86626870277655
+    },
+    "sparse": {
+     "match": 1.0,
+     "us_pilot": 164.04328466530254
+    },
+    "sliced": {
+     "match": 1.0,
+     "us_pilot": 30.980179525372204,
+     "us": 29.877052942428627,
+     "us_min": 28.65730967329781,
+     "us_max": 30.523950462922016
+    }
+   },
+   "best_kernel": "sliced",
+   "cpu_match": 1.0,
+   "cpu_us_per_sample": 29.877052942428627,
+   "cpu_us_min": 28.65730967329781,
+   "cpu_us_max": 30.523950462922016
+  },
+  {
+   "dataset": "wos",
+   "tag": "V_C400",
+   "seed": 0,
+   "clauses_total": 2800,
+   "n_test": 9397,
+   "kernels": {
+    "dense": {
+     "match": 1.0,
+     "us_pilot": 294.672767478977
+    },
+    "sparse": {
+     "match": 1.0,
+     "us_pilot": 1069.8798829413536
+    },
+    "sliced": {
+     "match": 1.0,
+     "us_pilot": 106.77231797380861,
+     "us": 101.91533489411573,
+     "us_min": 92.79352782803527,
+     "us_max": 125.02738842183548
+    }
+   },
+   "best_kernel": "sliced",
+   "cpu_match": 1.0,
+   "cpu_us_per_sample": 101.91533489411573,
+   "cpu_us_min": 92.79352782803527,
+   "cpu_us_max": 125.02738842183548
+  }
+ ]
+}

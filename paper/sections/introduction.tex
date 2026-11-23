@@ -1,0 +1,52 @@
+\section{Introduction}\label{sec:intro}
+
+The Tsetlin Machine (TM) learns classifiers as sets of conjunctive clauses over Boolean literals~\cite{granmo2018tsetlin}.
+Its inference uses only AND, NOT and counting.
+This makes the TM attractive for interpretable and energy-efficient edge inference.
+Reported TM hardware includes digital designs~\cite{wheeldon2020learning}, FPGA accelerators~\cite{tunheim2025fpga} and in-memory computing with resistive and Y-Flash devices~\cite{ghazal2023imbue,ghazal2025impact}.
+Model compression for edge TM inference has also been studied~\cite{maheshwari2023redress}.
+
+Each TM clause is a propositional rule over Boolean feature conditions.
+A trained TM is therefore a rule base that a domain expert can inspect.
+This property matters in decision-support applications.
+Rudin argues that high-stakes decisions should use interpretable models rather than explained black boxes~\cite{rudin2019stop}.
+In network intrusion detection, operators need to understand what a detector reports before they can act on it~\cite{sommer2010outside}.
+In time-domain astronomy, alert brokers such as ALeRCE classify the alert streams of survey telescopes in real time~\cite{forster2021alerce}.
+LSST is expected to publish several million alerts per night, each within 60 seconds of observation~\cite{ivezic2019lsst}.
+Such applications need classifiers that are both readable and fast at low energy.
+
+A known weakness of the TM is the strict, all-or-nothing clause evaluation.
+A clause votes only if every included literal is satisfied.
+To reach competitive accuracy, standard TMs often employ thousands of clauses~\cite{hnilov2025fptm}.
+The recently proposed Fuzzy-Pattern Tsetlin Machine (FPTM) relaxes this rule~\cite{hnilov2025fptm}.
+An FPTM clause keeps a positive score while only a few of its literals fail. The hyperparameter $\LF$ bounds the number of tolerated misses, and the score decreases with every miss.
+The FPTM paper reports a $50\times$ clause reduction over the Coalesced TM on IMDb, and about $400\times$ fewer clauses than the Composite TM on Fashion-MNIST~\cite{hnilov2025fptm}.
+
+Fewer clauses do not translate automatically into cheaper hardware.
+A strict clause is a ternary match. It maps naturally onto a ternary content addressable memory (TCAM)~\cite{pagiamtzis2006cam}, where one search evaluates all stored clauses in parallel.
+A fuzzy clause needs a count of mismatching literals, which a binary-sensed CAM search does not provide.
+The question addressed in this paper is how the fuzzy clause semantics interacts with an in-memory computing platform, and whether the clause reduction of FPTM survives the mapping.
+
+We study this question on \gainp{}, an associative processor (AP) built on a silicon-proven gain cell embedded DRAM (GC-eDRAM) array in a 16~nm FinFET process~\cite{levi2026gainp}.
+\gainp{} stores data in column-major order. The read wordlines act as searchlines and the read bitlines as matchlines. It supports masked and ternary search, a per-column tag accumulator and parallel write-back~\cite{levi2026gainp}.
+Like earlier APs~\cite{yavits2015rap}, it computes arbitrary Boolean functions bit-serially and in parallel across all columns.
+This work targets a new \gainp{} design in a commercial 7~nm FinFET process. Its hardware evaluation is therefore predictive.
+
+The contributions of this work are as follows.
+\begin{itemize}
+    \item We map FPTM inference onto the native \gainp{} compare and write primitives, using two data layouts. In the sample-stationary layout, each column holds one input sample and the trained model becomes a broadcast program. In the clause-stationary layout, each column holds one clause as a ternary pattern and the sample drives the searchlines.
+    \item We derive exact compile-time clause simplifications and two in-array miss counters (a saturating thermometer counter and a binary counter). The cheaper counter is selected per clause.
+    \item We verify both mappings bit-exactly. A functional \gainp{} simulator executes the generated programs on test samples. For every trained model, the in-array predictions match an independent software reference on all checked samples.
+    \item We predict the parameters of a 7~nm \gainp{} from the 16~nm \gainp{} figures and foundry scaling data, as a conservative and an optimistic corner.
+    \item We train FPTM, strict models (the FPTM trainer with $\LF=1$) and vanilla TM baselines on three public datasets from different application domains. They are scientific text (WOS-46985)~\cite{kowsari2017hdltex}, astronomical alert light curves (ALeRCE)~\cite{sanchezsaez2021alerce} and network intrusion records (NSL-KDD)~\cite{tavallaee2009nslkdd}. We report accuracy together with the predicted 7~nm \gainp{} latency, throughput, energy and area.
+    \item We include the controller in the cost model, and compare the predicted \gainp{} energy with TM inference on a CPU and with published TM hardware accelerators. We relate the predicted throughput to the alert rate expected in time-domain astronomy. We identify when the more compact FPTM rule base is also predicted to be the cheaper one in hardware.
+    \item \wosnew{We train the FPTM and strict models with accuracy-oriented and with energy-oriented hyperparameters and report the accuracy and energy front of each dataset. We show that the \gainp{} energy of FPTM follows its total number of included literals and its miss tolerance, rather than its clause count alone.}
+\end{itemize}
+
+The rest of the paper is organized as follows.
+Section~\ref{sec:background} reviews FPTM and \gainp{}.
+Section~\ref{sec:mapping} presents the two mappings.
+Section~\ref{sec:gainp7} presents the 7~nm \gainp{} and its predicted parameters.
+Section~\ref{sec:method} describes the experimental methodology.
+Section~\ref{sec:results} reports the results, and Section~\ref{sec:discussion} discusses them.
+Section~\ref{sec:conclusions} concludes the paper.

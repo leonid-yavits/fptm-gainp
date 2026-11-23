@@ -1,0 +1,22 @@
+{
+ "dataset": "nslkdd",
+ "tag": "V_C200",
+ "seed": 2,
+ "epochs_run": 18,
+ "impl": "pyTsetlinMachine",
+ "clauses": 200,
+ "T": 50,
+ "s": 10.0,
+ "epochs": 50,
+ "best_epoch": 8,
+ "val_acc": 0.9395935862835371,
+ "test_acc": 0.8328189847823774,
+ "train_time_s": 64.0,
+ "export_agreement": 1.0,
+ "n_features": 178,
+ "n_classes": 23,
+ "total": 408819,
+ "per_clause_mean": 88.87369565217391,
+ "per_clause_max": 178,
+ "empty_clauses": 2
+}

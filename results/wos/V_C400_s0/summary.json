@@ -1,0 +1,22 @@
+{
+ "dataset": "wos",
+ "tag": "V_C400",
+ "seed": 0,
+ "epochs_run": 50,
+ "impl": "pyTsetlinMachine",
+ "clauses": 400,
+ "T": 100,
+ "s": 10.0,
+ "epochs": 50,
+ "best_epoch": 40,
+ "val_acc": 0.7826549614259112,
+ "test_acc": 0.7825901883579865,
+ "train_time_s": 5509.4,
+ "export_agreement": 1.0,
+ "n_features": 10000,
+ "n_classes": 7,
+ "total": 2984562,
+ "per_clause_mean": 1065.915,
+ "per_clause_max": 2004,
+ "empty_clauses": 2
+}

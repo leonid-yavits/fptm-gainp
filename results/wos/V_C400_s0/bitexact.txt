@@ -1,0 +1,2 @@
+wos V_C400_s0 mapping S match: 1.0 n=1500 cycles 95667 rows 10041
+wos V_C400_s0 mapping C match: 1.0 n=200 cycles 3 {'F_used': 9993, 'columns': 2798, 'rows': 9994, 'score_bits': 1, 'reduction_adds': 2798, 'strict_program': True}

@@ -1,0 +1,2 @@
+alerce S_LF1_C600_s0 mapping S match: 1.0 n=1500 cycles 332275 rows 1218
+alerce S_LF1_C600_s0 mapping C match: 1.0 n=200 cycles 3 {'F_used': 1172, 'columns': 9000, 'rows': 1173, 'score_bits': 1, 'reduction_adds': 9000, 'strict_program': True}

@@ -1,0 +1,8 @@
+The Fuzzy-Pattern Tsetlin Machine (FPTM) lets a clause vote with a reduced score when some of its literals fail. Reported clause reductions for Tsetlin Machine (TM) classifiers reach $50\times$ to about $400\times$.
+We study whether this advantage survives in-memory inference on \gainp{}, a gain cell embedded DRAM associative processor.
+We map FPTM inference onto the \gainp{} compare and write primitives in a sample-stationary and a clause-stationary layout.
+A functional simulator confirms that the in-array predictions match a software reference \wosnew{on all checked test samples}.
+The hardware evaluation targets a new \gainp{} design in a 7~nm FinFET process, with parameters scaled from 16~nm \gainp{} and foundry data.
+We train FPTM, strict ($\LF=1$) and vanilla TM models on WOS-46985 text, ALeRCE astronomical light curves and NSL-KDD intrusion records.
+\wosnew{With accuracy-oriented hyperparameters,} \hyp{the predicted energy per classification in the sample-stationary layout is 0.15 to 112~nJ, including the controller. This lies within the range of published TM ASICs and in-memory designs and below that of TM FPGA accelerators. Under a 1~W core-power bound, a single-thread CPU needs at least $63\times$ more energy.}
+\wosnew{A fuzzy clause costs a bit-serial miss count, so FPTM energy follows its included literals. Energy-oriented hyperparameters cut it by $1.6\times$ to $25\times$. On NSL-KDD, FPTM models then reach the accuracy band of the best strict model at $13\times$ to $23\times$ less predicted energy. On ALeRCE, FPTM gives the cheapest points. On WOS-46985, strict models stay cheaper.}

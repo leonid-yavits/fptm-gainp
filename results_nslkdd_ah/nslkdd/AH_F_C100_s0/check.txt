@@ -1,0 +1,2 @@
+nslkdd AH_F_C100_s0 mapping S match: 1.0 n=1500 cycles 208572 rows 221
+nslkdd AH_F_C100_s0 mapping C match: 1.0 n=200 cycles 1447 {'F_used': 178, 'columns': 2300, 'rows': 192, 'score_bits': 2, 'reduction_adds': 2300, 'strict_program': False}

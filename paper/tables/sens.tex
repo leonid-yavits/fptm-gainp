@@ -1,0 +1,7 @@
+We test how the \wosnew{accuracy-oriented} ALeRCE comparison, the 20-clause FPTM against the 600-clause $\LF=1$ model, depends on the modelling choices.
+\wosnew{The strict model needs \hyp{1.28$\times$} to \hyp{1.55$\times$} the energy of the FPTM model in every case tested.
+The cases are the 16~nm reference points, both predicted 7~nm corners, a per-column energy model, no controller, a five times lower sequencer energy and a 64-subarray macro.
+The controller share of the Mapping~S energy is \hyp{3\% to 84\%}, highest on WOS-46985.
+With a $10\times$ shorter retention time, the refresh overhead of the FPTM batch latency rises to \hyp{14.3\%} at the conservative corner.
+If refresh used the shared sense amplifier instead of lockstep local refresh, Mapping~S on WOS-46985 would not be feasible at the conservative corner, while the ALeRCE ranking would not change.
+Section~\\supref{sens} of the supplementary material gives the full analysis.}

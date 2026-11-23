@@ -1,0 +1,2 @@
+nslkdd S_LF1_C1000_s0 mapping S match: 1.0 n=1500 cycles 923017 rows 225
+nslkdd S_LF1_C1000_s0 mapping C match: 1.0 n=200 cycles 3 {'F_used': 178, 'columns': 22986, 'rows': 179, 'score_bits': 1, 'reduction_adds': 22986, 'strict_program': True}

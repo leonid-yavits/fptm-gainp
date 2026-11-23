@@ -1,0 +1,80 @@
+python3 run_vanilla.py wos V_C400 400 100 10 50 0
+python3 run_fptm.py nslkdd S_LF1_C1000 1000 100 100 16 1 128 50 0
+python3 run_fptm.py alerce S_LF1_C1000 1000 100 200 16 1 128 50 0
+python3 run_vanilla.py alerce V_C1000 1000 100 10 50 0
+python3 run_fptm.py nslkdd S_LF1_C600 600 90 100 16 1 128 50 0
+python3 run_fptm.py alerce S_LF1_C600 600 90 200 16 1 128 50 0
+python3 run_fptm.py nslkdd S_LF1_C600 600 90 100 16 1 128 50 1
+python3 run_fptm.py alerce S_LF1_C600 600 90 200 16 1 128 50 1
+python3 run_fptm.py nslkdd S_LF1_C600 600 90 100 16 1 128 50 2
+python3 run_fptm.py alerce S_LF1_C600 600 90 200 16 1 128 50 2
+python3 run_fptm.py wos F5_C100 100 50 1000 16 4 200 50 0
+python3 run_fptm.py wos F5_C100 100 50 1000 16 4 200 50 1
+python3 run_fptm.py wos F5_C100 100 50 1000 16 4 200 50 2
+python3 run_fptm.py nslkdd S_LF1_C400 400 75 100 16 1 128 50 0
+python3 run_fptm.py alerce S_LF1_C400 400 75 200 16 1 128 50 0
+python3 run_fptm.py wos S_LF1_C400 400 75 1000 16 1 128 50 0
+python3 run_fptm.py nslkdd S_LF1_C400 400 75 100 16 1 128 50 1
+python3 run_fptm.py alerce S_LF1_C400 400 75 200 16 1 128 50 1
+python3 run_fptm.py wos S_LF1_C400 400 75 1000 16 1 128 50 1
+python3 run_fptm.py nslkdd S_LF1_C400 400 75 100 16 1 128 50 2
+python3 run_fptm.py alerce S_LF1_C400 400 75 200 16 1 128 50 2
+python3 run_fptm.py wos S_LF1_C400 400 75 1000 16 1 128 50 2
+python3 run_vanilla.py alerce V_C200 200 50 10 50 0
+python3 run_vanilla.py alerce V_C200 200 50 10 50 1
+python3 run_vanilla.py alerce V_C200 200 50 10 50 2
+python3 run_fptm.py alerce F5_C100 100 50 200 16 4 200 50 0
+python3 run_fptm.py alerce F5_C100 100 50 200 16 4 200 50 1
+python3 run_fptm.py alerce F5_C100 100 50 200 16 4 200 50 2
+python3 run_fptm.py nslkdd S_LF1_C200 200 50 100 16 1 128 50 0
+python3 run_fptm.py alerce S_LF1_C200 200 50 200 16 1 128 50 0
+python3 run_fptm.py nslkdd S_LF1_C200 200 50 100 16 1 128 50 1
+python3 run_fptm.py alerce S_LF1_C200 200 50 200 16 1 128 50 1
+python3 run_fptm.py nslkdd S_LF1_C200 200 50 100 16 1 128 50 2
+python3 run_fptm.py alerce S_LF1_C200 200 50 200 16 1 128 50 2
+python3 run_vanilla.py nslkdd V_C1000 1000 100 10 50 0
+python3 run_fptm.py wos F4_C40 40 32 1000 16 8 200 50 0
+python3 run_fptm.py wos F4_C40 40 32 1000 16 8 200 50 1
+python3 run_fptm.py wos F4_C40 40 32 1000 16 8 200 50 2
+python3 run_fptm.py nslkdd F5_C100 100 50 100 16 4 200 50 0
+python3 run_fptm.py nslkdd F5_C100 100 50 100 16 4 200 50 1
+python3 run_fptm.py nslkdd F5_C100 100 50 100 16 4 200 50 2
+python3 run_fptm.py wos S_LF1_C200 200 50 1000 16 1 128 50 0
+python3 run_fptm.py wos S_LF1_C200 200 50 1000 16 1 128 50 1
+python3 run_fptm.py wos S_LF1_C200 200 50 1000 16 1 128 50 2
+python3 run_fptm.py alerce F4_C40 40 32 200 16 8 200 50 0
+python3 run_fptm.py wos F3_C20 20 20 1000 32 8 200 50 0
+python3 run_fptm.py alerce F4_C40 40 32 200 16 8 200 50 1
+python3 run_fptm.py wos F3_C20 20 20 1000 32 8 200 50 1
+python3 run_fptm.py alerce F4_C40 40 32 200 16 8 200 50 2
+python3 run_fptm.py wos F3_C20 20 20 1000 32 8 200 50 2
+python3 run_fptm.py nslkdd F4_C40 40 32 100 16 8 200 50 0
+python3 run_fptm.py wos F2_C10 10 20 1000 64 16 200 50 0
+python3 run_fptm.py nslkdd F4_C40 40 32 100 16 8 200 50 1
+python3 run_fptm.py wos F2_C10 10 20 1000 64 16 200 50 1
+python3 run_fptm.py nslkdd F4_C40 40 32 100 16 8 200 50 2
+python3 run_fptm.py wos F2_C10 10 20 1000 64 16 200 50 2
+python3 run_vanilla.py nslkdd V_C200 200 50 10 50 0
+python3 run_vanilla.py nslkdd V_C200 200 50 10 50 1
+python3 run_vanilla.py nslkdd V_C200 200 50 10 50 2
+python3 run_fptm.py nslkdd F3_C20 20 20 100 32 8 200 50 0
+python3 run_fptm.py alerce F3_C20 20 20 200 32 8 200 50 0
+python3 run_fptm.py wos F1_C2 2 10 1000 64 32 200 50 0
+python3 run_fptm.py nslkdd F3_C20 20 20 100 32 8 200 50 1
+python3 run_fptm.py alerce F3_C20 20 20 200 32 8 200 50 1
+python3 run_fptm.py wos F1_C2 2 10 1000 64 32 200 50 1
+python3 run_fptm.py nslkdd F3_C20 20 20 100 32 8 200 50 2
+python3 run_fptm.py alerce F3_C20 20 20 200 32 8 200 50 2
+python3 run_fptm.py wos F1_C2 2 10 1000 64 32 200 50 2
+python3 run_fptm.py nslkdd F2_C10 10 20 100 64 16 200 50 0
+python3 run_fptm.py alerce F2_C10 10 20 200 64 16 200 50 0
+python3 run_fptm.py nslkdd F2_C10 10 20 100 64 16 200 50 1
+python3 run_fptm.py alerce F2_C10 10 20 200 64 16 200 50 1
+python3 run_fptm.py nslkdd F2_C10 10 20 100 64 16 200 50 2
+python3 run_fptm.py alerce F2_C10 10 20 200 64 16 200 50 2
+python3 run_fptm.py nslkdd F1_C2 2 10 100 64 32 200 50 0
+python3 run_fptm.py alerce F1_C2 2 10 200 64 32 200 50 0
+python3 run_fptm.py nslkdd F1_C2 2 10 100 64 32 200 50 1
+python3 run_fptm.py alerce F1_C2 2 10 200 64 32 200 50 1
+python3 run_fptm.py nslkdd F1_C2 2 10 100 64 32 200 50 2
+python3 run_fptm.py alerce F1_C2 2 10 200 64 32 200 50 2

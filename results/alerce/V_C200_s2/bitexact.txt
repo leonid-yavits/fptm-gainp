@@ -1,0 +1,2 @@
+alerce V_C200_s2 mapping S match: 1.0 n=1500 cycles 88870 rows 1210
+alerce V_C200_s2 mapping C match: 1.0 n=200 cycles 3 {'F_used': 1171, 'columns': 2995, 'rows': 1172, 'score_bits': 1, 'reduction_adds': 2995, 'strict_program': True}

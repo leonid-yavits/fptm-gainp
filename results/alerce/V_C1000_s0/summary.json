@@ -1,0 +1,22 @@
+{
+ "dataset": "alerce",
+ "tag": "V_C1000",
+ "seed": 0,
+ "epochs_run": 34,
+ "impl": "pyTsetlinMachine",
+ "clauses": 1000,
+ "T": 100,
+ "s": 10.0,
+ "epochs": 50,
+ "best_epoch": 24,
+ "val_acc": 0.9152834008097166,
+ "test_acc": 0.9139676113360324,
+ "train_time_s": 1417.9,
+ "export_agreement": 0.9993117408906883,
+ "n_features": 1172,
+ "n_classes": 15,
+ "total": 912839,
+ "per_clause_mean": 60.85593333333333,
+ "per_clause_max": 651,
+ "empty_clauses": 36
+}

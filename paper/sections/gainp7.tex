@@ -1,0 +1,37 @@
+\section{\gainp{} in a commercial 7~nm FinFET process}\label{sec:gainp7}
+
+The published \gainp{} macro is implemented in 16~nm FinFET technology~\cite{levi2026gainp}.
+This work targets a new \gainp{} design in a commercial 7~nm FinFET process.
+The architecture, the CAM cell organization and the compare and write primitives of Section~\ref{sec:gainp} are unchanged.
+The circuit parameters change with the process.
+Because silicon and post-layout data of the 7~nm design are not yet available, we predict its parameters from the 16~nm \gainp{} figures and from published foundry scaling data. No 7~nm circuit data are used in this paper.
+All 7~nm numbers in this paper are predictions.
+
+\label{sec:params7}
+We scale the 16~nm \gainp{} parameters with the published comparison of a 7~nm FinFET platform with a 16~nm FinFET technology of the same foundry~\cite{wu2016n7,wu2013n16}.
+The 7~nm platform reports more than $3.3\times$ routed gate density~\cite{wu2016n7}. It also reports either a 35\% to 40\% speed gain at equal power or more than 65\% power reduction at equal speed~\cite{wu2016n7}.
+Its high-density 6T SRAM cell measures 0.027~$\mu$m$^2$~\cite{wu2016n7}, against about 0.07~$\mu$m$^2$ for the high-density SRAM cell of the 16~nm technology~\cite{wu2013n16}.
+The speed gain and the power reduction are alternatives, not cumulative. We therefore derive two 7~nm corners.
+\begin{itemize}
+\item \textbf{Conservative corner.} \hyp{The 16~nm circuit-simulation point (2~ns, 10.4~fJ) is scaled by the lower speed gain at equal power, $1.35\times$. The cycle time and the energy per operation both shrink by $1.35\times$. The static power per Mbit is kept at its 16~nm value.}
+\item \textbf{Optimistic corner.} \hyp{We interpret the reported 2.17~$\mu$W per bit at 1~GHz~\cite{levi2026gainp} as 2.17~fJ per cell operation. This interpretation is ours. It is $4.8\times$ below the circuit-simulation compare energy of 10.4~fJ, and the article does not state over which operations and bits the system figure is averaged. The resulting 16~nm system point (1~ns, 2.17~fJ) keeps its cycle time. Its energy per operation and static power shrink by the 65\% power reduction at equal speed. The 1~ns cycle is the system clock of the evaluation workbook. It is not supported by the 16~nm circuit simulation, which gives 2~ns.}
+\end{itemize}
+\hyp{The cell and macro areas scale with the ratio of the high-density SRAM cells, $0.027/0.07=0.386$.
+Using the SRAM ratio for the whole macro assumes that the periphery scales like the bitcell.}
+Most of the spread between the two corners stems from the two 16~nm starting points, not from the 7~nm scaling itself. These are the circuit-simulation point and the system point.
+Table~\ref{tab:params7} lists the resulting parameters.
+
+\begin{table}[!htbp]
+\small
+\centering
+\caption{\gainp{} parameters: 16~nm reference values from~\cite{levi2026gainp} and predicted 7~nm corners.}
+\label{tab:params7}
+\input{tables/params7}
+\end{table}
+
+\hyp{The predictions rest on five assumptions.
+(P1) The gain-cell array follows the logic speed and power scaling of the foundry data. Gain-cell read current and matchline capacitance may scale differently.
+(P2) The macro area follows the SRAM cell area ratio.
+(P3) The retention time, and therefore the refresh period, is kept at the 16~nm value. In a 7~nm process, subthreshold and gate leakage may shorten the retention time. Section~\ref{sec:sens} evaluates a $10\times$ shorter retention time.
+(P4) The compare cycle and the energy per cell operation do not depend on the number of subarrays joined in one logical column. The additional matchline load of up to 79 joined subarrays is not modelled. It would lengthen the evaluation phase and raise the energy per compare. Absolute latencies and energies, in particular on WOS-46985, may therefore be underestimated, and throughputs overestimated. In Mapping~S, all models of one dataset use the same number of stacked subarrays, so their cycle ranking within a dataset is not affected. Their energy ranking could change only through the controller share, which differs between models.
+(P5) The 16~nm process of \gainp{} is comparable to the 16~nm baseline of the foundry comparison~\cite{wu2016n7,wu2013n16}.}

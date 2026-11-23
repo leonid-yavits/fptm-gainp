@@ -1,0 +1,104 @@
+\section{Mapping FPTM onto \gainp{}}\label{sec:mapping}
+
+We use the COMPARE and WRITE primitives of Section~\ref{sec:background} and a row READ.
+COMPARE applies a pattern to a set of rows, masks all other rows and ORs the per-column match into the tag.
+WRITE stores the tag into one row and clears the tag.
+READ outputs one row.
+\hyp{We assume that WRITE and READ, like COMPARE, take one cycle.}
+We write $f \leftarrow \{q_1,\dots,q_k\}$ for $k$ compares with product terms $q_i$ followed by a write of $f$, which costs $k+1$ cycles.
+
+\subsection{Exact clause simplification}\label{sec:norm}
+Before code generation, each trained clause is simplified at compile time.
+The rules below preserve Eq.~(\ref{eq:fptm}) exactly.
+\begin{enumerate}
+\item \emph{Conflicting literals.} If a clause includes both $x_i$ and $\lnot x_i$, exactly one of them fails for every input.
+In FPTM, both literals are removed and $b_j$ decreases by one. If $b_j\le0$, the clause always scores zero and is removed.
+In the strict TM, such a clause never fires and is removed.
+FPTM training produces such clauses (Section~\ref{sec:results}).
+\item \emph{Unreachable clamp.} If $b_j$ exceeds the number of remaining literals $n'_j$, the clamp in Eq.~(\ref{eq:fptm}) is never active. The excess $b_j-n'_j$ becomes a constant and $b_j\leftarrow n'_j$.
+\item \emph{Constants.} Empty FPTM clauses score $\LF$. They and the constants of rule~2 are summed per class at compile time and written once as the initial value of the vote accumulators.
+\item \emph{Unit budget.} If $b_j=1$, the score equals the strict conjunction of the remaining literals.
+\end{enumerate}
+
+\subsection{Mapping S: sample-stationary}\label{sec:mapS}
+Each logical \gainp{} column holds one input sample in $F$ CAM rows, plus working rows.
+The trained model is compiled into one data-independent program that the controller broadcasts to all columns.
+\hyp{The program is not stored. A sequencer expands the sparse model, kept in an on-chip SRAM (M7), into the COMPARE and WRITE stream on the fly. Each literal and clause header is read once per batch, and the instruction pattern of a literal depends only on its position in the clause and on $b_j$.}
+A batch is as wide as the number of available columns.
+Inputs longer than the 128 CAM cells of a subarray occupy vertically adjacent subarrays.
+We denote the number of stacked subarrays by $h=\lceil R/128\rceil$, where $R$ is the number of CAM rows of the program.
+During COMPARE, the read bitlines of these subarrays are connected at the input of one sense amplifier, which feeds one tag register (Fig.~\ref{fig:arch}(b)).
+The stacked subarrays thus form one logical column, and a single COMPARE spans all of them.
+\hyp{Each subarray keeps its local sense amplifiers and tag registers, and the bitline join is switchable. Refresh opens the join and uses the local path, so all subarrays refresh in lockstep. The controller starts a refresh only after a WRITE, so that no partially accumulated tag is lost. In a WRITE, the tag drives the write bitlines of the subarray that holds the target row. The join switches are additional hardware. Their area and energy are not modelled.}
+The same construction is used in Mapping~C.
+
+\paragraph{Strict clauses}
+A clause with $b_j=1$ is evaluated by a single COMPARE, followed by a WRITE to a temporary row $Q$ (2 cycles). The COMPARE pattern holds the required value of every included literal.
+This uses the full associative search, independent of the clause length.
+
+\paragraph{Fuzzy clauses, thermometer counter}
+For $b_j\ge2$ we count misses with a saturating thermometer code $U_r=[m_j\ge r]$, $r=1,\dots,b_j$.
+For the $t$-th literal, with input row $i$ and miss value $u$ (the complement of the required value), the update is
+\begin{align}
+U_r &\leftarrow \{U_r,\; U_{r-1}\wedge(x_i{=}u)\}, && r=\min(b_j,t),\dots,2,\\
+U_1 &\leftarrow \{U_1,\; (x_i{=}u)\}.
+\end{align}
+Processing $r$ in descending order reads the old $U_{r-1}$.
+Each level costs three cycles, so the literal costs $3\min(b_j,t)$ cycles.
+Saturation is automatic. The score $s_j=b_j-\max\{r:U_r=1\}$, with the maximum taken as 0 if no $U_r$ is set, is then converted to binary. Bit $k$ of $s_j$ is the OR of the terms $U_m\wedge\lnot U_{m+1}$ over all $m=0,\dots,b_j$ with bit $k$ of $b_j-m$ set, where $U_0=1$ and $U_{b_j+1}=0$.
+
+\paragraph{Fuzzy clauses, binary counter}
+Alternatively, $m_j$ is accumulated in a binary counter.
+The first counter bit fuses the literal test into the carry and sum terms.
+After $t$ literals the counter needs $\lceil\log_2(t+1)\rceil$ bits, at 5 cycles per bit (3 for the top bit).
+After the last literal, $b_j-m_j$ is computed with the constant $b_j$ folded into the product terms, and the borrow clamps negative results to zero.
+The compiler emits both counters for each clause, counts their cycles and keeps the cheaper one.
+The choice depends only on $n'_j$ and $b_j$, which are known after training.
+
+\paragraph{Votes and decision}
+Positive and negative scores are accumulated in two unsigned ripple-carry accumulators $P_c$ and $N_c$.
+Their width grows with the running upper bound of the sum, so early additions are short.
+After the last clause of a class, $V_c=P_c-N_c$ is formed by a ripple subtractor of at most 9 cycles per bit.
+A running maximum $B$ and its class index $I$ are updated with a signed comparison and two conditional copies.
+Strict ``greater than'' keeps the first maximum, as \texttt{argmax} does.
+At the end, the $\lceil\log_2 K\rceil$ rows of $I$ are read out, where $K$ is the number of classes.
+Algorithm~\ref{alg:mapS} summarizes the program.
+
+\begin{algorithm}[t]
+\caption{Sample-stationary FPTM program (broadcast to all columns).}
+\label{alg:mapS}
+\begin{algorithmic}[1]
+\For{each class $c$}
+  \State $P,N \gets$ compile-time constants of class $c$
+  \For{each live clause $j$ of class $c$}
+    \If{$b_j=1$} \State $Q\gets$ COMPARE(all literals of $j$); $Z\gets Q$
+    \Else \State $Z\gets$ cheaper of thermometer and binary miss counter (Sec.~\ref{sec:mapS})
+    \EndIf
+    \State $P\gets P+Z$ if $j$ is positive, else $N\gets N+Z$
+  \EndFor
+  \State $V\gets P-N$; \textbf{if} $c=0$ \textbf{then} $B\gets V$, $I\gets0$ \textbf{else if} $V>B$ \textbf{then} $B\gets V$, $I\gets c$
+\EndFor
+\State read out $I$
+\end{algorithmic}
+\end{algorithm}
+
+\subsection{Mapping C: clause-stationary}\label{sec:mapC}
+Here each column holds one clause as a ternary pattern.
+An included $x_i$ is stored as 1, an included $\lnot x_i$ as 0 and an excluded feature as ``don't care''.
+The model is written once. The sample drives the searchlines, so no input data are written into the array.
+Features that no clause uses are not stored, and their searchlines are not driven.
+
+Conflicting literal pairs are removed and lower the stored budget (Section~\ref{sec:norm}).
+If every live clause has $b_j=1$, one COMPARE over all used rows and one WRITE evaluate all clauses, for any number of clauses. One READ outputs the clause results.
+For fuzzy clauses, the binary sense amplifier gives only match or mismatch per compare.
+The miss count is therefore built feature by feature.
+For each used feature, one COMPARE on that row and one WRITE produce the per-column match bit $\rho$.
+A ``don't care'' cell always matches, so $\rho=0$ marks a miss.
+The thermometer update of Section~\ref{sec:mapS} follows, with $\lnot\rho$ as the miss signal and at most $\LF$ levels.
+After the last feature, the thermometer is converted to the binary miss count $m_j$.
+Each column stores its own budget $b_j$ in $\lceil\log_2(\LF+1)\rceil$ rows, written with the model.
+A borrow chain forms $s_j=\max(0,b_j-m_j)$, and the score rows are read out.
+
+The class votes are sums over columns.
+\gainp{} has no inter-column communication, so this reduction is not a native primitive.
+\hyp{In Mapping~C, the reduction is performed outside the array. We report its operation count, one addition per live clause, but not its cost.}

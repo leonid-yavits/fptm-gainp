@@ -1,0 +1,2 @@
+wos F4_C40_s2 mapping S match: 1.0 n=1500 cycles 2072394 rows 10068
+wos F4_C40_s2 mapping C match: 1.0 n=200 cycles 245035 {'F_used': 9425, 'columns': 280, 'rows': 9453, 'score_bits': 4, 'reduction_adds': 280, 'strict_program': False}

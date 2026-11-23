@@ -1,0 +1,2 @@
+wos AH_F_C10_s0 mapping S match: 1.0 n=1500 cycles 102817 rows 10029
+wos AH_F_C10_s0 mapping C match: 1.0 n=200 cycles 47479 {'F_used': 5932, 'columns': 70, 'rows': 5946, 'score_bits': 2, 'reduction_adds': 70, 'strict_program': False}

@@ -1,0 +1,2 @@
+alerce AH_S_LF1_C400_s0 mapping S match: 1.0 n=1500 cycles 205260 rows 1214
+alerce AH_S_LF1_C400_s0 mapping C match: 1.0 n=200 cycles 3 {'F_used': 1172, 'columns': 6000, 'rows': 1173, 'score_bits': 1, 'reduction_adds': 6000, 'strict_program': True}
