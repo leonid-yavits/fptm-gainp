@@ -195,7 +195,7 @@ Table captions and surrounding text were edited on Overleaf after generation. Th
 
 ## 7. Manuscript and submission
 
-`manuscript/` is a snapshot of the Overleaf project (ID `6af0bb3922046c07b60edb7c`) at submission time. It compiles with `elsarticle` on Overleaf or a local TeX Live. All text is black. Colour macros (`\hyp`, `\wosnew`, `\artem`) remain in the source as black no-ops.
+`manuscript/` is a snapshot of the Overleaf project (ID `6af0bb3922046c07b60edb7c`) at submission time. It compiles with `elsarticle` on Overleaf or a local TeX Live. All text and diagrams are black. Colour macros (`\hyp`, `\wosnew`, `\artem`) remain in the source as black no-ops.
 
 `submission/` holds what was uploaded to Editorial Manager:
 
@@ -228,7 +228,7 @@ python3 submission/make_tp.py <Artem's e-mail>                       # Title_pag
 ### Decisions made during writing
 
 * The 7 nm figures are results of the authors' 7 nm GainP design (commercial 7 nm FinFET, PDK under NDA). The design is not fabricated. The 16 nm values are a reference.
-* All submitted documents are black only (no coloured markup).
+* All text and diagrams in the submitted documents are black. Only the markers of the two data plots (Fig. 3, Fig. S1) are coloured.
 * "Platform", never "substrate", for the hardware system. "Predicted" is avoided for hardware model results. The text states once that the hardware numbers come from a model.
 * Funding statement left empty. AI statement: "AI was used in preparation of this work."
 * `\usepackage{comment}` is loaded in the manuscript.
